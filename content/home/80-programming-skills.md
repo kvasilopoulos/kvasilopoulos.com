@@ -19,7 +19,7 @@ subtitle = "Framework"
   icon = "terminal"
   icon_pack = "fas"
   name = " Advanced <br> <span style='font-size:16px;color:grey;'> </span>"
-  description = "<span style='font-size: 18px !important; color:black !important;font-weight: 600;font-variant: small-caps;'> R & Matlab</span>"
+  description = "<span style='font-size: 18px !important; color:black !important;font-weight: 600;font-variant: small-caps;'> R, Python & Matlab</span>"
   
 [[feature]]
   # icon = "r-project"
@@ -27,7 +27,7 @@ subtitle = "Framework"
   # icon_pack = "fab"
   icon_pack = "fas"
   name = "Intermediate <br> <span style='font-size:16px;color:grey;'>  </span>"
-  description = "<span style='font-size: 18px !important; color:black !important;font-weight: 600;font-variant: small-caps;'> C++, Dynare & Python</span>"
+  description = "<span style='font-size: 18px !important; color:black !important;font-weight: 600;font-variant: small-caps;'> Stata, C++, Dynare </span>"
   
 [[feature]]
   icon = "code"
