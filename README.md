@@ -1,36 +1,87 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Kostas Vasilopoulos - Personal Website
+
+A modern, responsive personal website built with Next.js, TypeScript, and Tailwind CSS.
+
+## Features
+
+- 🌓 Dark/Light mode support
+- 📱 Fully responsive design
+- 🎨 Modern and clean UI
+- ⚡ Fast and optimized performance
+- 🎯 Interactive skill graphs
+- 🔄 Smooth animations
+- 📊 Professional project showcase
+- 📝 Detailed experience timeline
+
+## Tech Stack
+
+- Next.js 14
+- TypeScript
+- Tailwind CSS
+- Framer Motion
+- Lucide Icons
+- next-themes
 
 ## Getting Started
 
-First, run the development server:
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/personal-website.git
+   cd personal-website
+   ```
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Run the development server:
+   ```bash
+   npm run dev
+   ```
+
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+## Project Structure
+
+```
+src/
+├── app/                # Next.js app directory
+│   ├── about/         # About page
+│   ├── contact/       # Contact page
+│   ├── experience/    # Experience page
+│   ├── projects/      # Projects page
+│   ├── skills/        # Skills page
+│   └── page.tsx       # Home page
+├── components/        # Reusable components
+└── styles/           # Global styles
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Customization
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Update personal information in respective page components
+2. Modify theme colors in `tailwind.config.ts`
+3. Add/modify animations in page components
+4. Update social links in the Contact page
+5. Add your own projects in the Projects page
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Building for Production
 
-## Learn More
+```bash
+npm run build
+```
 
-To learn more about Next.js, take a look at the following resources:
+This will create an optimized production build in the `.next` directory.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deployment
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The site can be deployed to various platforms:
 
-## Deploy on Vercel
+- Vercel (recommended)
+- Netlify
+- AWS Amplify
+- Custom server
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## License
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+MIT License - feel free to use this template for your own personal website! 
