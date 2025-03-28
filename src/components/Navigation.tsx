@@ -3,23 +3,31 @@
 import * as React from "react"
 import { Moon, Sun } from "lucide-react"
 import { useTheme } from "next-themes"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
 
 const navItems = [
-    { name: "Home", path: "#hero" },
-    { name: "About", path: "#about" },
-    { name: "Skills", path: "#skills" },
-    { name: "Experience", path: "#experience" },
-    // { name: "Projects", path: "#projects" },
-    { name: "Contact", path: "#contact" },
+    { name: "Home", path: "/" },
+    { name: "About", path: "/#about" },
+    { name: "Skills", path: "/#skills" },
+    { name: "Experience", path: "/#experience" },
+    // { name: "Projects", path: "/#projects" },
+    { name: "Contact", path: "/#contact" },
+    { name: "CV", path: "/cv" },
 ]
 
 export function Navigation() {
     const { theme, setTheme } = useTheme()
     const [activeSection, setActiveSection] = React.useState("hero")
+    const pathname = usePathname()
 
     React.useEffect(() => {
         const handleScroll = () => {
-            const sections = navItems.map(item => item.path.substring(1))
+            if (pathname !== '/') return // Only handle scroll on home page
+            
+            const sections = navItems
+                .filter(item => item.path.startsWith('/#'))
+                .map(item => item.path.substring(2))
             const currentPosition = window.scrollY + 100
 
             for (let i = sections.length - 1; i >= 0; i--) {
@@ -37,16 +45,18 @@ export function Navigation() {
         return () => {
             window.removeEventListener('scroll', handleScroll)
         }
-    }, [])
+    }, [pathname])
 
     const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, path: string) => {
-        e.preventDefault()
-        const element = document.querySelector(path)
-        if (element) {
-            window.scrollTo({
-                top: element.getBoundingClientRect().top + window.scrollY - 80,
-                behavior: 'smooth'
-            })
+        if (path.startsWith('/#')) {
+            e.preventDefault()
+            const element = document.querySelector(path.substring(1))
+            if (element) {
+                window.scrollTo({
+                    top: element.getBoundingClientRect().top + window.scrollY - 80,
+                    behavior: 'smooth'
+                })
+            }
         }
     }
 
@@ -54,26 +64,35 @@ export function Navigation() {
         <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
             <div className="container flex h-16 items-center px-4">
                 <div className="mr-4 hidden md:flex">
-                    <a 
-                        href="#hero" 
-                        onClick={(e) => handleNavClick(e, '#hero')} 
+                    <Link 
+                        href="/"
                         className="mr-6 flex items-center space-x-2"
                     >
                         <span className="hidden font-bold sm:inline-block">
                             Kostas Vasilopoulos
                         </span>
-                    </a>
+                    </Link>
                     <nav className="flex items-center space-x-6 text-sm font-medium">
                         {navItems.map((item) => (
-                            <a
-                                key={item.path}
-                                href={item.path}
-                                onClick={(e) => handleNavClick(e, item.path)}
-                                className={`transition-colors hover:text-foreground/80 ${activeSection === item.path.substring(1) ? "text-foreground" : "text-foreground/60"
-                                    }`}
-                            >
-                                {item.name}
-                            </a>
+                            item.path.startsWith('/#') ? (
+                                <a
+                                    key={item.path}
+                                    href={item.path}
+                                    onClick={(e) => handleNavClick(e, item.path)}
+                                    className={`transition-colors hover:text-foreground/80 ${activeSection === item.path.substring(2) ? "text-foreground" : "text-foreground/60"
+                                        }`}
+                                >
+                                    {item.name}
+                                </a>
+                            ) : (
+                                <Link
+                                    key={item.path}
+                                    href={item.path}
+                                    className={`transition-colors hover:text-foreground/80 ${pathname === item.path ? "text-foreground" : "text-foreground/60"}`}
+                                >
+                                    {item.name}
+                                </Link>
+                            )
                         ))}
                     </nav>
                 </div>

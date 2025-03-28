@@ -15,28 +15,27 @@ interface Skill {
 
 const skills: Skill[] = [
     // Programming Languages
-    { name: "Python", level: 95, category: "Programming Languages" },
-    { name: "R", level: 90, category: "Programming Languages" },
-    { name: "JavaScript/TypeScript", level: 85, category: "Programming Languages" },
-    { name: "SQL", level: 85, category: "Programming Languages" },
+    { name: "Python & R", level: 90, category: "Programming Languages" },
+    { name: "SQL", level: 75, category: "Programming Languages" },
+    { name: "JavaScript/TypeScript & HTML/CSS", level: 60, category: "Programming Languages" },
 
-    // Machine Learning
-    { name: "TensorFlow", level: 90, category: "Machine Learning" },
-    { name: "PyTorch", level: 90, category: "Machine Learning" },
-    { name: "Scikit-learn", level: 95, category: "Machine Learning" },
-    { name: "Deep Learning", level: 90, category: "Machine Learning" },
+    // Machine Learning & AI
+    { name: "Generative AI & LLMs", level: 90, category: "Machine Learning & AI" },
+    { name: "Natural Language Processing", level: 85, category: "Machine Learning & AI" },
+    { name: "Deep Learning & Neural Networks", level: 75, category: "Machine Learning & AI" },
+    
 
     // Data Science
-    { name: "Data Analysis", level: 95, category: "Data Science" },
-    { name: "Data Visualization", level: 90, category: "Data Science" },
-    { name: "Statistical Analysis", level: 90, category: "Data Science" },
-    { name: "Big Data", level: 85, category: "Data Science" },
+    // { name: "Data Analysis & Statistics", level: 95, category: "Data Science" },
+    // { name: "Data Visualization", level: 90, category: "Data Science" },
+    // { name: "Big Data Processing", level: 85, category: "Data Science" },
+    // { name: "Time Series Analysis", level: 85, category: "Data Science" },
 
     // Tools & Technologies
-    { name: "Git", level: 90, category: "Tools & Technologies" },
-    { name: "Docker", level: 85, category: "Tools & Technologies" },
-    { name: "AWS", level: 85, category: "Tools & Technologies" },
-    { name: "MLOps", level: 80, category: "Tools & Technologies" },
+    { name: "Docker & K8s", level: 85, category: "Tools & Technologies" },
+    { name: "AWS Cloud Services", level: 85, category: "Tools & Technologies" },
+    { name: "Git & CI/CD, DevOps", level: 80, category: "Tools & Technologies" },
+    
 ]
 
 // Projects data
@@ -86,62 +85,118 @@ interface Experience {
 
 const experiences: Experience[] = [
     {
-        title: "Senior Machine Learning Engineer",
-        company: "Tech Company",
-        period: "2020 - Present",
+        title: "Machine Learning Engineer, Manager",
+        company: "Pfizer",
+        period: "May 2023 - Present",
         description: [
-            "Led the development of computer vision models for autonomous systems",
-            "Designed and implemented scalable ML pipelines using cloud infrastructure",
-            "Mentored junior engineers and conducted technical interviews",
-            "Reduced model inference time by 40% through optimization techniques",
+            "Managed the integration of Large Language Models (LLMs) into the platform, resolving technical obstacles and boosting platform capabilities",
+            "Implemented MLOps best practices to enhance the efficiency, scalability, and performance of AI solutions within the platform",
+            "Technical Lead for Ethicara ML: Led the development and implementation of ethical AI solutions for Pfizer, ensuring compliance with industry standards and guiding responsible AI practices",
+            "Engaged with users and stakeholders to align platform enhancements with business goals, while fostering cross-team collaboration"
         ],
         technologies: [
-            "PyTorch",
-            "TensorFlow",
             "Python",
-            "Docker",
+            "Machine Learning",
+            "LLMs",
+            "MLOps",
             "Kubernetes",
-            "AWS",
+            "Cloud Computing"
         ],
     },
     {
         title: "Machine Learning Engineer",
-        company: "AI Startup",
-        period: "2018 - 2020",
+        company: "SophoTree",
+        period: "January 2022 - May 2023",
         description: [
-            "Developed NLP models for text classification and sentiment analysis",
-            "Built end-to-end ML pipelines for data processing and model training",
-            "Collaborated with cross-functional teams to deliver AI solutions",
-            "Improved model accuracy by 25% using advanced preprocessing techniques",
+            "Tech Lead for company-specific contributions to the Infinitech and AI4PP European Projects (Horizon 2020)",
+            "Led the design and implementation of a distributed data collection system in Kubernetes, enabling horizontal scaling to support millions of jobs daily",
+            "Deployed multiple ML models to production, integrating them into the platform with autoscaling, microbatching, and runtime optimizations, resulting in a 320% increase in throughput and a 40% cost reduction",
+            "Delivered API microservices with integrated Postgres, Elasticsearch, and analytics capabilities, enhancing the platform's data processing and retrieval"
         ],
         technologies: [
             "Python",
-            "Scikit-learn",
-            "NLTK",
-            "SpaCy",
-            "FastAPI",
+            "Kubernetes",
             "PostgreSQL",
+            "Elasticsearch",
+            "Machine Learning",
+            "Microservices"
         ],
     },
     {
         title: "Data Scientist",
-        company: "Research Institute",
-        period: "2016 - 2018",
+        company: "SophoTree",
+        period: "June 2021 - January 2022",
         description: [
-            "Conducted research in deep learning and computer vision",
-            "Published papers in top-tier conferences and journals",
-            "Developed novel algorithms for image segmentation",
-            "Collaborated with international research teams",
+            "Led data analysis and machine learning initiatives",
+            "Developed and implemented data-driven solutions"
         ],
         technologies: [
             "Python",
-            "R",
-            "TensorFlow",
-            "OpenCV",
-            "MATLAB",
-            "LaTeX",
+            "Data Analysis",
+            "Machine Learning",
+            "Statistics"
         ],
     },
+    {
+        title: "Visiting Researcher",
+        company: "Lancaster University",
+        period: "July 2021 - July 2022",
+        description: [
+            "Developed scalable and efficient methods for data analysis and model development, enhancing data cleansing, manipulation, and processing within existing software applications and frameworks",
+            "Achieved recognition for the Housing Observatory, featured in prominent economics journals like The Times, with findings actively utilized by practitioners and institutions such as Central Banks"
+        ],
+        technologies: [
+            "Data Analysis",
+            "Statistical Modeling",
+            "Research",
+            "Economics"
+        ],
+    },
+    {
+        title: "Teaching Associate",
+        company: "Lancaster University",
+        period: "November 2020 - August 2021",
+        description: [
+            "Teaching and mentoring students in economics and data analysis"
+        ],
+        technologies: [
+            "Teaching",
+            "Economics",
+            "Data Analysis"
+        ],
+    },
+    {
+        title: "Research Assistant",
+        company: "Lancaster University",
+        period: "May 2019 - October 2020",
+        description: [
+            "Analyzing and modelling UK national and regional housing markets",
+            "Developing interactive tools for real-time monitoring of real estate markets",
+            "Maintaining the website to ensure optimal performance and user experience"
+        ],
+        technologies: [
+            "Data Analysis",
+            "Statistical Modeling",
+            "Web Development",
+            "Economics"
+        ],
+    },
+    {
+        title: "Teaching Assistant",
+        company: "Lancaster University",
+        period: "October 2016 - September 2020",
+        description: [
+            "Teaching Economics to classes of 15-60 students in weekly discussion sessions for six semesters",
+            "Courses Tutored:",
+            "- Econ222: Intermediate Macroeconomics I",
+            "- Econ 102: Principles of Economics B"
+        ],
+        technologies: [
+            "Teaching",
+            "Economics",
+            "Education"
+        ],
+    }
 ]
 
 // Social Links data
@@ -150,11 +205,11 @@ const socialLinks = [
         name: "Email",
         href: "mailto:k.vasilopoulo@gmail.com", // Replace with your email
         icon: Mail,
-        username: "contact@example.com",
+        username: "k.vasilopoulo@gmail.com",
     },
     {
         name: "LinkedIn",
-        href: "https://linkedin.com/kvasilopoulos/", // Add your LinkedIn username
+        href: "https://www.linkedin.com/in/kvasilopoulos/", // Add your LinkedIn username
         icon: Linkedin,
         username: "LinkedIn Profile",
     },
@@ -191,9 +246,8 @@ const item = {
 function SkillBar({ skill, inView }: { skill: Skill; inView: boolean }) {
     return (
         <div className="mb-6">
-            <div className="mb-2 flex justify-between">
+            <div className="mb-2">
                 <span className="font-medium">{skill.name}</span>
-                <span className="text-muted-foreground">{skill.level}%</span>
             </div>
             <div className="h-2 w-full rounded-full bg-secondary">
                 <motion.div
@@ -237,12 +291,12 @@ export default function Home() {
             />
 
             {/* Hero Section */}
-            <section id="hero" className="relative flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-background to-background/80 py-12 sm:py-20">
-                <div className="flex flex-col items-center gap-6 text-center">
-                    <div className="relative h-48 w-48 overflow-hidden rounded-full bg-muted ring-4 ring-primary ring-offset-2 ring-offset-background">
+            <section id="hero" className="relative flex min-h-screen flex-col items-center justify-start bg-gradient-to-b from-background to-background/80 pt-32 pb-16 sm:pt-40 sm:pb-24">
+                <div className="flex flex-col items-center gap-8 text-center px-4">
+                    <div className="relative h-48 w-48 sm:h-56 sm:w-56 overflow-hidden rounded-full bg-muted ring-4 ring-primary ring-offset-2 ring-offset-background">
                         <div className="flex h-full w-full items-center justify-center">
                             <Image
-                                src="/assets/profile.jpg"
+                                src="/assets/linkedin2.jpg"
                                 alt="Kostas Vasilopoulos"
                                 fill
                                 className="object-cover"
@@ -251,9 +305,9 @@ export default function Home() {
                             />
                         </div>
                     </div>
-                    <div className="space-y-2">
+                    <div className="space-y-4">
                         <motion.h1 
-                            className="text-4xl font-bold tracking-tighter sm:text-5xl"
+                            className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tighter"
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5 }}
@@ -261,7 +315,7 @@ export default function Home() {
                             Kostas Vasilopoulos
                         </motion.h1>
                         <motion.p 
-                            className="text-lg text-muted-foreground"
+                            className="text-lg sm:text-xl md:text-2xl text-muted-foreground"
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: 0.2 }}
@@ -270,7 +324,7 @@ export default function Home() {
                         </motion.p>
                     </div>
                     <motion.p 
-                        className="max-w-[42rem] leading-normal text-muted-foreground sm:text-xl sm:leading-8"
+                        className="max-w-[42rem] leading-normal text-muted-foreground text-base sm:text-lg md:text-xl sm:leading-8"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.4 }}
@@ -280,26 +334,27 @@ export default function Home() {
                     </motion.p>
                 </div>
                 <motion.div 
-                    className="absolute bottom-10 left-1/2 -translate-x-1/2"
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
+                    className="absolute bottom-12 left-1/2 -translate-x-1/2"
+                    initial={{ opacity: 1, y: 0 }}
+                    animate={{ 
+                        y: [0, 10, 0],
+                    }}
                     transition={{ 
-                        duration: 0.5, 
-                        delay: 1,
+                        duration: 2,
                         repeat: Infinity,
                         repeatType: "reverse",
-                        repeatDelay: 0.2
+                        ease: "easeInOut"
                     }}
                 >
                     <a href="#about" className="flex flex-col items-center text-muted-foreground hover:text-foreground">
                         <span className="mb-2 text-sm">Scroll Down</span>
-                        <ArrowDown className="h-5 w-5" />
+                        <ArrowDown className="h-6 w-6" />
                     </a>
                 </motion.div>
             </section>
 
             {/* About Section */}
-            <section id="about" className="py-20 bg-accent/5">
+            <section id="about" className="min-h-screen py-20 bg-accent/5">
                 <div className="container mx-auto max-w-4xl px-4">
                     <motion.h2 
                         className="mb-8 text-3xl font-bold text-center sm:text-4xl"
@@ -344,13 +399,14 @@ export default function Home() {
                             >
                                 <h4 className="mb-4 text-xl font-medium">Expertise</h4>
                                 <ul className="list-inside list-disc space-y-2 text-lg">
-                                    <li>Deep Learning & Neural Networks</li>
-                                    <li>Computer Vision & Image Processing</li>
-                                    <li>Natural Language Processing</li>
+                                    <li>Large Language Models & Generative AI</li>
                                     <li>Machine Learning Operations (MLOps)</li>
-                                    <li>Data Analysis & Visualization</li>
-                                    <li>Cloud Computing & Distributed Systems</li>
+                                    <li>Natural Language Processing</li>
+                                    <li>Distributed Systems & Cloud Computing</li>
+                                    <li>Data Analysis & Statistical Modeling</li>
+                                    <li>Ethical AI & Responsible AI Practices</li>
                                 </ul>
+                                
                             </motion.div>
                             <motion.div
                                 initial={{ opacity: 0, y: 20 }}
@@ -361,16 +417,16 @@ export default function Home() {
                             >
                                 <h4 className="mb-4 text-xl font-medium">Education</h4>
                                 <div className="rounded-lg border bg-card p-3 shadow-sm">
-                                    <h5 className="text-lg font-medium">Ph.D. in Machine Learning</h5>
-                                    <p className="text-muted-foreground">University Name • 2018-2022</p>
+                                    <h5 className="text-lg font-medium">Ph.D. in Economics</h5>
+                                    <p className="text-muted-foreground">Lancaster University • 2016-2020</p>
                                 </div>
                                 <div className="rounded-lg border bg-card p-3 shadow-sm">
-                                    <h5 className="text-lg font-medium">M.Sc. in Computer Science</h5>
-                                    <p className="text-muted-foreground">University Name • 2016-2018</p>
+                                    <h5 className="text-lg font-medium">M.Sc. in Economics, Applied Finance</h5>
+                                    <p className="text-muted-foreground">University of Macedonia • 2014-2016</p>
                                 </div>
                                 <div className="rounded-lg border bg-card p-3 shadow-sm">
-                                    <h5 className="text-lg font-medium">B.Sc. in Computer Science</h5>
-                                    <p className="text-muted-foreground">University Name • 2012-2016</p>
+                                    <h5 className="text-lg font-medium">B.Sc. in Economics</h5>
+                                    <p className="text-muted-foreground">University of Macedonia • 2009-2014</p>
                                 </div>
                             </motion.div>
                         </div>
@@ -399,7 +455,7 @@ export default function Home() {
                     >
                         Here's an overview of my technical skills and proficiency levels.
                     </motion.p>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-12">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-12">
                         {Array.from(new Set(skills.map((skill) => skill.category))).map((category) => (
                             <div key={category}>
                                 <h3 className="mb-6 text-xl font-semibold">{category}</h3>
@@ -408,9 +464,8 @@ export default function Home() {
                                         .filter((skill) => skill.category === category)
                                         .map((skill) => (
                                             <div key={skill.name} className="mb-4">
-                                                <div className="mb-2 flex justify-between">
+                                                <div className="mb-2">
                                                     <span className="font-medium">{skill.name}</span>
-                                                    <span className="text-muted-foreground">{skill.level}%</span>
                                                 </div>
                                                 <div className="h-2 w-full rounded-full bg-secondary">
                                                     <motion.div
@@ -449,39 +504,57 @@ export default function Home() {
                         viewport={{ once: true }}
                         className="space-y-12"
                     >
-                        {experiences.map((exp, index) => (
-                            <motion.div
-                                key={index}
-                                variants={item}
-                                className="rounded-lg border bg-card p-6 shadow-sm"
-                            >
-                                <div className="mb-4">
-                                    <h3 className="text-2xl font-semibold">{exp.title}</h3>
-                                    <div className="mt-1 flex items-center gap-2 text-muted-foreground">
-                                        <span>{exp.company}</span>
-                                        <span>•</span>
-                                        <span>{exp.period}</span>
+                        {Array.from(new Set(experiences.map(exp => exp.company))).map(company => {
+                            const companyExperiences = experiences
+                                .filter(exp => exp.company === company)
+                                .sort((a, b) => {
+                                    const dateA = new Date(a.period.split(' - ')[0]);
+                                    const dateB = new Date(b.period.split(' - ')[0]);
+                                    return dateB.getTime() - dateA.getTime();
+                                });
+
+                            return (
+                                <motion.div
+                                    key={company}
+                                    variants={item}
+                                    className="rounded-lg border bg-card p-6 shadow-sm"
+                                >
+                                    <div className="mb-6">
+                                        <h3 className="text-2xl font-semibold text-primary">{company}</h3>
                                     </div>
-                                </div>
-                                <ul className="mb-4 list-inside list-disc space-y-2">
-                                    {exp.description.map((desc, i) => (
-                                        <li key={i} className="text-muted-foreground">
-                                            {desc}
-                                        </li>
-                                    ))}
-                                </ul>
-                                <div className="flex flex-wrap gap-2">
-                                    {exp.technologies.map((tech, i) => (
-                                        <span
-                                            key={i}
-                                            className="rounded-full bg-primary/10 px-3 py-1 text-sm text-primary"
-                                        >
-                                            {tech}
-                                        </span>
-                                    ))}
-                                </div>
-                            </motion.div>
-                        ))}
+                                    <div className="space-y-8">
+                                        {companyExperiences.map((exp, index) => (
+                                            <div key={index} className="relative pl-6 border-l-2 border-primary/20">
+                                                <div className="absolute -left-[9px] top-0 h-4 w-4 rounded-full bg-primary/20" />
+                                                <div className="mb-4">
+                                                    <h4 className="text-xl font-semibold">{exp.title}</h4>
+                                                    <div className="mt-1 flex items-center gap-2 text-muted-foreground">
+                                                        <span>{exp.period}</span>
+                                                    </div>
+                                                </div>
+                                                <ul className="mb-4 list-inside list-disc space-y-2">
+                                                    {exp.description.map((desc, i) => (
+                                                        <li key={i} className="text-muted-foreground">
+                                                            {desc}
+                                                        </li>
+                                                    ))}
+                                                </ul>
+                                                <div className="flex flex-wrap gap-2">
+                                                    {exp.technologies.map((tech, i) => (
+                                                        <span
+                                                            key={i}
+                                                            className="rounded-full bg-primary/10 px-3 py-1 text-sm text-primary"
+                                                        >
+                                                            {tech}
+                                                        </span>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </motion.div>
+                            );
+                        })}
                     </motion.div>
                 </div>
             </section>
@@ -608,16 +681,15 @@ export default function Home() {
                         })}
                     </motion.div>
                     <motion.div
-                        variants={item}
-                        initial="hidden"
-                        whileInView="show"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="mt-12 rounded-lg border bg-card p-6 shadow-sm"
+                        className="mt-12 text-center"
                     >
                         <h4 className="mb-4 text-2xl font-semibold">Let's Connect</h4>
                         <p className="text-muted-foreground">
                             Whether you want to discuss a project, ask about my experience, or just
-                            say hello, I'd love to hear from you. 
+                            say hello, I'd love to hear from you.
                         </p>
                     </motion.div>
                 </div>

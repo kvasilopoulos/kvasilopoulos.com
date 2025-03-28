@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
-import { Navigation } from "@/components/Navigation";
+import { Navbar } from "@/components/Navbar";
+import { Favicon } from "@/components/Favicon";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,7 +27,8 @@ export default function RootLayout({
                     disableTransitionOnChange
                 >
                     <div className="min-h-screen bg-background">
-                        <Navigation />
+                        <Favicon />
+                        <Navbar />
                         <main className="container mx-auto px-4 py-8">{children}</main>
                     </div>
                 </ThemeProvider>
