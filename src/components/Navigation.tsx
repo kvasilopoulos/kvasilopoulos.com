@@ -20,6 +20,8 @@ export function Navigation() {
     const { theme, setTheme } = useTheme()
     const [activeSection, setActiveSection] = React.useState("hero")
     const pathname = usePathname()
+    const isHome = pathname === "/"
+    const isCV = pathname === "/cv"
 
     React.useEffect(() => {
         const handleScroll = () => {
@@ -61,49 +63,31 @@ export function Navigation() {
     }
 
     return (
-        <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-            <div className="container flex h-16 items-center px-4">
-                <div className="mr-4 hidden md:flex">
-                    <Link 
-                        href="/"
-                        className="mr-6 flex items-center space-x-2"
-                    >
-                        <span className="hidden font-bold sm:inline-block">
-                            Kostas Vasilopoulos
-                        </span>
+        <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm border-b">
+            <div className="container mx-auto px-4">
+                <div className="flex items-center justify-between h-16">
+                    <Link href="/" className="text-xl font-bold">
+                        KV
                     </Link>
-                    <nav className="flex items-center space-x-6 text-sm font-medium">
-                        {navItems.map((item) => (
-                            item.path.startsWith('/#') ? (
-                                <a
-                                    key={item.path}
-                                    href={item.path}
-                                    onClick={(e) => handleNavClick(e, item.path)}
-                                    className={`transition-colors hover:text-foreground/80 ${activeSection === item.path.substring(2) ? "text-foreground" : "text-foreground/60"
-                                        }`}
-                                >
-                                    {item.name}
-                                </a>
-                            ) : (
-                                <Link
-                                    key={item.path}
-                                    href={item.path}
-                                    className={`transition-colors hover:text-foreground/80 ${pathname === item.path ? "text-foreground" : "text-foreground/60"}`}
-                                >
-                                    {item.name}
-                                </Link>
-                            )
-                        ))}
-                    </nav>
+                    <div className="flex gap-4">
+                        <Link 
+                            href="/" 
+                            className={`text-sm font-medium transition-colors hover:text-primary ${
+                                isHome ? "text-primary" : "text-muted-foreground"
+                            }`}
+                        >
+                            Home
+                        </Link>
+                        <Link 
+                            href="/cv" 
+                            className={`text-sm font-medium transition-colors hover:text-primary ${
+                                isCV ? "text-primary" : "text-muted-foreground"
+                            }`}
+                        >
+                            CV
+                        </Link>
+                    </div>
                 </div>
-                <button
-                    onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-                    className="ml-auto flex h-9 w-9 items-center justify-center rounded-md border transition-colors hover:bg-accent"
-                >
-                    <Sun className="h-4 w-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-                    <Moon className="absolute h-4 w-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-                    <span className="sr-only">Toggle theme</span>
-                </button>
             </div>
         </nav>
     )

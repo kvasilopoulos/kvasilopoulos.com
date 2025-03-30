@@ -6,18 +6,27 @@ import { motion, AnimatePresence } from "framer-motion"
 import Link from "next/link"
 import { useTheme } from "next-themes"
 import { Button } from "@/components/ui/button"
+import { usePathname, useRouter } from "next/navigation"
 
 const navItems = [
-    { name: "About", href: "#about" },
-    { name: "Skills", href: "#skills" },
-    { name: "Experience", href: "#experience" },
-    { name: "Contact", href: "#contact" },
+    { name: "Home", path: "/" },
+    { name: "About", path: "/#about" },
+    { name: "Skills", path: "/#skills" },
+    { name: "Experience", path: "/#experience" },
+    // { name: "Projects", path: "/#projects" },
+    { name: "Contact", path: "/#contact" },
+    { name: "CV", path: "/cv" },
 ]
 
 export function Navbar() {
     const [isOpen, setIsOpen] = React.useState(false)
     const [scrolled, setScrolled] = React.useState(false)
     const { theme, setTheme } = useTheme()
+    const [activeSection, setActiveSection] = React.useState("hero")
+    const pathname = usePathname()
+    const router = useRouter()
+    const isHome = pathname === "/"
+    const isCV = pathname === "/cv"
 
     React.useEffect(() => {
         const handleScroll = () => {
@@ -26,6 +35,64 @@ export function Navbar() {
         window.addEventListener("scroll", handleScroll)
         return () => window.removeEventListener("scroll", handleScroll)
     }, [])
+
+    React.useEffect(() => {
+        const handleScroll = () => {
+            if (pathname !== '/') return // Only handle scroll on home page
+            
+            const sections = navItems
+                .filter(item => item.path.startsWith('/#'))
+                .map(item => item.path.substring(2))
+            const currentPosition = window.scrollY + 100
+
+            for (let i = sections.length - 1; i >= 0; i--) {
+                const section = document.getElementById(sections[i])
+                if (section && section.offsetTop <= currentPosition) {
+                    setActiveSection(sections[i])
+                    break
+                }
+            }
+        }
+
+        window.addEventListener('scroll', handleScroll)
+        handleScroll() // Initialize on mount
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll)
+        }
+    }, [pathname])
+
+    const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, path: string) => {
+        e.preventDefault()
+        if (path.startsWith('/#')) {
+            if (isCV) {
+                // If we're on the CV page, first navigate to home
+                router.push('/')
+                // Wait for navigation to complete before scrolling
+                setTimeout(() => {
+                    const element = document.querySelector(path.substring(1))
+                    if (element) {
+                        window.scrollTo({
+                            top: element.getBoundingClientRect().top + window.scrollY - 80,
+                            behavior: 'smooth'
+                        })
+                    }
+                }, 100)
+            } else {
+                // If we're already on the home page, just scroll
+                const element = document.querySelector(path.substring(1))
+                if (element) {
+                    window.scrollTo({
+                        top: element.getBoundingClientRect().top + window.scrollY - 80,
+                        behavior: 'smooth'
+                    })
+                }
+            }
+        } else {
+            // For non-hash links, just navigate normally
+            router.push(path)
+        }
+    }
 
     return (
         <motion.nav 
@@ -36,7 +103,7 @@ export function Navbar() {
             <div className="container mx-auto px-4">
                 <div className="flex items-center justify-between h-16">
                     <Link 
-                        href="#" 
+                        href="/"
                         className="text-xl font-bold bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent"
                     >
                         KV
@@ -45,14 +112,23 @@ export function Navbar() {
                     {/* Desktop Navigation */}
                     <div className="hidden md:flex items-center space-x-8">
                         {navItems.map((item) => (
-                            <Link
-                                key={item.name}
-                                href={item.href}
-                                className="text-muted-foreground hover:text-foreground transition-colors relative group"
+                            <a
+                                key={item.path}
+                                href={item.path}
+                                onClick={(e) => handleNavClick(e, item.path)}
+                                className={`text-muted-foreground hover:text-foreground transition-colors relative group ${
+                                    item.path.startsWith('/#') 
+                                        ? activeSection === item.path.substring(2) 
+                                            ? "text-foreground" 
+                                            : "text-foreground/60"
+                                        : pathname === item.path 
+                                            ? "text-foreground" 
+                                            : "text-foreground/60"
+                                }`}
                             >
                                 {item.name}
                                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
-                            </Link>
+                            </a>
                         ))}
                         <Button
                             variant="ghost"
@@ -103,14 +179,17 @@ export function Navbar() {
                         >
                             <div className="py-4 space-y-4">
                                 {navItems.map((item) => (
-                                    <Link
-                                        key={item.name}
-                                        href={item.href}
+                                    <a
+                                        key={item.path}
+                                        href={item.path}
+                                        onClick={(e) => {
+                                            handleNavClick(e, item.path)
+                                            setIsOpen(false)
+                                        }}
                                         className="block text-muted-foreground hover:text-foreground transition-colors py-2"
-                                        onClick={() => setIsOpen(false)}
                                     >
                                         {item.name}
-                                    </Link>
+                                    </a>
                                 ))}
                             </div>
                         </motion.div>

@@ -1,0 +1,221 @@
+{
+    "personal": {
+        "name": "Kostas Vasilopoulos",
+        "title": "AI & Machine Learning Engineer",
+        "subtitle": "I specialize in developing and deploying machine learning solutions, with expertise in deep learning and natural language processing.",
+        "about": [
+            "I am a Machine Learning Engineer with a passion for developing innovative AI solutions that solve real-world problems. My journey in the field of artificial intelligence began during my academic years, where I developed a strong foundation in mathematics, statistics, and computer science.",
+            "Throughout my career, I have worked on diverse projects ranging from computer vision applications to natural language processing systems. I specialize in designing and implementing scalable machine learning pipelines, optimizing model performance, and deploying AI solutions in production environments."
+        ],
+        "expertise": [
+            "Large Language Models & Generative AI",
+            "Machine Learning Operations (MLOps)",
+            "Natural Language Processing",
+            "Distributed Systems & Cloud Computing",
+            "Data Analysis & Statistical Modeling",
+            "Ethical AI & Responsible AI Practices"
+        ],
+        "education": [
+            {
+                "degree": "Ph.D. in Economics",
+                "school": "Lancaster University",
+                "period": "2016-2020"
+            },
+            {
+                "degree": "M.Sc. in Economics, Applied Finance",
+                "school": "University of Macedonia",
+                "period": "2014-2016"
+            },
+            {
+                "degree": "B.Sc. in Economics",
+                "school": "University of Macedonia",
+                "period": "2009-2014"
+            }
+        ]
+    },
+    "skills": [
+        {
+            "name": "Python & R",
+            "level": 90,
+            "category": "Programming Languages"
+        },
+        {
+            "name": "SQL",
+            "level": 75,
+            "category": "Programming Languages"
+        },
+        {
+            "name": "JavaScript/TypeScript & HTML/CSS",
+            "level": 60,
+            "category": "Programming Languages"
+        },
+        {
+            "name": "Generative AI & LLMs",
+            "level": 90,
+            "category": "Machine Learning & AI"
+        },
+        {
+            "name": "Natural Language Processing",
+            "level": 85,
+            "category": "Machine Learning & AI"
+        },
+        {
+            "name": "Deep Learning & Neural Networks",
+            "level": 75,
+            "category": "Machine Learning & AI"
+        },
+        {
+            "name": "Docker & K8s",
+            "level": 85,
+            "category": "Tools & Technologies"
+        },
+        {
+            "name": "AWS Cloud Services",
+            "level": 85,
+            "category": "Tools & Technologies"
+        },
+        {
+            "name": "Git & CI/CD, DevOps",
+            "level": 80,
+            "category": "Tools & Technologies"
+        }
+    ],
+    "experience": [
+        {
+            "title": "Machine Learning Engineer, Manager",
+            "company": "Pfizer",
+            "period": "May 2023 - Present",
+            "description": [
+                "Managed the integration of Large Language Models (LLMs) into the platform, resolving technical obstacles and boosting platform capabilities",
+                "Implemented MLOps best practices to enhance the efficiency, scalability, and performance of AI solutions within the platform",
+                "Technical Lead for Ethicara ML: Led the development and implementation of ethical AI solutions for Pfizer, ensuring compliance with industry standards and guiding responsible AI practices",
+                "Engaged with users and stakeholders to align platform enhancements with business goals, while fostering cross-team collaboration"
+            ],
+            "technologies": [
+                "Python",
+                "Machine Learning",
+                "LLMs",
+                "MLOps",
+                "Kubernetes",
+                "Cloud Computing"
+            ]
+        },
+        {
+            "title": "Machine Learning Engineer",
+            "company": "SophoTree",
+            "period": "January 2022 - May 2023",
+            "description": [
+                "Tech Lead for company-specific contributions to the Infinitech and AI4PP European Projects (Horizon 2020)",
+                "Led the design and implementation of a distributed data collection system in Kubernetes, enabling horizontal scaling to support millions of jobs daily",
+                "Deployed multiple ML models to production, integrating them into the platform with autoscaling, microbatching, and runtime optimizations, resulting in a 320% increase in throughput and a 40% cost reduction",
+                "Delivered API microservices with integrated Postgres, Elasticsearch, and analytics capabilities, enhancing the platform's data processing and retrieval"
+            ],
+            "technologies": [
+                "Python",
+                "Kubernetes",
+                "PostgreSQL",
+                "Elasticsearch",
+                "Machine Learning",
+                "Microservices"
+            ]
+        },
+        {
+            "title": "Data Scientist",
+            "company": "SophoTree",
+            "period": "June 2021 - January 2022",
+            "description": [
+                "Led data analysis and machine learning initiatives",
+                "Developed and implemented data-driven solutions"
+            ],
+            "technologies": [
+                "Python",
+                "Data Analysis",
+                "Machine Learning",
+                "Statistics"
+            ]
+        },
+        {
+            "title": "Visiting Researcher",
+            "company": "Lancaster University",
+            "period": "July 2021 - July 2022",
+            "description": [
+                "Developed scalable and efficient methods for data analysis and model development, enhancing data cleansing, manipulation, and processing within existing software applications and frameworks",
+                "Achieved recognition for the Housing Observatory, featured in prominent economics journals like The Times, with findings actively utilized by practitioners and institutions such as Central Banks"
+            ],
+            "technologies": [
+                "Data Analysis",
+                "Statistical Modeling",
+                "Research",
+                "Economics"
+            ]
+        },
+        {
+            "title": "Teaching Associate",
+            "company": "Lancaster University",
+            "period": "November 2020 - August 2021",
+            "description": [
+                "Teaching and mentoring students in economics and data analysis"
+            ],
+            "technologies": [
+                "Teaching",
+                "Economics",
+                "Data Analysis"
+            ]
+        },
+        {
+            "title": "Research Assistant",
+            "company": "Lancaster University",
+            "period": "May 2019 - October 2020",
+            "description": [
+                "Analyzing and modelling UK national and regional housing markets",
+                "Developing interactive tools for real-time monitoring of real estate markets",
+                "Maintaining the website to ensure optimal performance and user experience"
+            ],
+            "technologies": [
+                "Data Analysis",
+                "Statistical Modeling",
+                "Web Development",
+                "Economics"
+            ]
+        },
+        {
+            "title": "Teaching Assistant",
+            "company": "Lancaster University",
+            "period": "October 2016 - September 2020",
+            "description": [
+                "Teaching Economics to classes of 15-60 students in weekly discussion sessions for six semesters",
+                "Courses Tutored:",
+                "- Econ222: Intermediate Macroeconomics I",
+                "- Econ 102: Principles of Economics B"
+            ],
+            "technologies": [
+                "Teaching",
+                "Economics",
+                "Education"
+            ]
+        }
+    ],
+    "contact": {
+        "socialLinks": [
+            {
+                "name": "Email",
+                "href": "mailto:k.vasilopoulo@gmail.com",
+                "icon": "Mail",
+                "username": "k.vasilopoulo@gmail.com"
+            },
+            {
+                "name": "LinkedIn",
+                "href": "https://www.linkedin.com/in/kvasilopoulos/",
+                "icon": "Linkedin",
+                "username": "LinkedIn Profile"
+            },
+            {
+                "name": "GitHub",
+                "href": "https://github.com/kvasilopoulos",
+                "icon": "Github",
+                "username": "GitHub Profile"
+            }
+        ],
+        "message": "Whether you want to discuss a project, ask about my experience, or just say hello, I'd love to hear from you."
+    }
+}
