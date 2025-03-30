@@ -7,8 +7,13 @@ import { Github, ExternalLink, Linkedin, Mail, Twitter, User, Download } from "l
 import data from "../../data/data.json"
 import { IconMap } from "@/types"
 import { Button } from "@/components/ui/button"
-import { PDFDownloadLink } from '@react-pdf/renderer'
+import dynamic from 'next/dynamic'
 import { CVPDF } from "@/components/CVPDF"
+
+const PDFDownloadLink = dynamic(
+    () => import('@react-pdf/renderer').then(mod => mod.PDFDownloadLink),
+    { ssr: false }
+)
 
 export default function CV() {
     const iconMap: IconMap = {
