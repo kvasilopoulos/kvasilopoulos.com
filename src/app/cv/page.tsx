@@ -1,190 +1,212 @@
+/*
+ * Paper-Style CV Page
+ * 
+ * This CV page is designed to resemble a printed document:
+ * - A4 paper proportions and layout
+ * - Clean, professional typography
+ * - Minimal colors (black text on white)
+ * - Print-ready styling
+ * - Section order: Summary → Experience → Education → Skills
+ */
+
 "use client"
 
-import * as React from "react"
 import { motion } from "framer-motion"
-import { Navbar } from "@/components/Navbar"
-import { Github, ExternalLink, Linkedin, Mail, Twitter, User, Download } from "lucide-react"
 import data from "../../data/data.json"
-import { IconMap } from "@/types"
-import { Button } from "@/components/ui/button"
-import { PDFDownloadLink } from '@react-pdf/renderer'
-import { CVPDF } from "@/components/CVPDF"
 
-export default function CV() {
-    const iconMap: IconMap = {
-        Mail,
-        Linkedin,
-        Github,
-        Twitter,
-        User
-    }
+export default function CVPage() {
+  return (
+    <div className="min-h-screen bg-white">
+      {/* A4 Paper Container */}
+      <div className="mx-auto" style={{ width: '210mm', minHeight: '297mm' }}>
+        {/* Paper Sheet */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="bg-white shadow-lg mx-auto relative"
+          style={{ 
+            width: '210mm', 
+            minHeight: '297mm',
+            padding: '20mm'
+          }}
+        >
+          {/* Header */}
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.1, duration: 0.6 }}
+            className="text-center mb-8 pb-6 border-b-2 border-black"
+          >
+            <h1 className="text-4xl font-bold mb-2 text-black tracking-wide">
+              {data.personal.name}
+            </h1>
+            <p className="text-xl font-semibold text-gray-700 mb-4">
+              {data.personal.title}
+            </p>
+            <div className="flex justify-center items-center gap-2 text-sm text-gray-600 flex-wrap">
+              {data.contact.socialLinks.map((link, index) => (
+                <span key={link.name} className="flex items-center">
+                  <a 
+                    href={link.href} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="hover:text-black transition-colors"
+                  >
+                    {link.username}
+                  </a>
+                  {index < data.contact.socialLinks.length - 1 && (
+                    <span className="mx-2 text-gray-400">•</span>
+                  )}
+                </span>
+              ))}
+            </div>
+          </motion.div>
 
-    return (
-        <div className="relative">
-            <Navbar />
-            
-            {/* Main Content */}
-            <main className="container mx-auto px-4 pt-24 pb-16">
-                {/* Header */}
-                <motion.div 
-                    className="mb-12 text-center"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5 }}
-                >
-                    <h1 className="text-4xl font-bold mb-4">{data.personal.name}</h1>
-                    <p className="text-xl text-muted-foreground">{data.personal.title}</p>
-                    <PDFDownloadLink
-                        document={<CVPDF />}
-                        fileName={`${data.personal.name.toLowerCase().replace(/\s+/g, '-')}-cv.pdf`}
-                        className="mt-4 inline-block"
-                    >
-                        {({ loading }) => (
-                            <Button
-                                variant="outline"
-                                disabled={loading}
-                            >
-                                <Download className="mr-2 h-4 w-4" />
-                                {loading ? 'Generating PDF...' : 'Download PDF'}
-                            </Button>
-                        )}
-                    </PDFDownloadLink>
-                </motion.div>
+          {/* Professional Summary */}
+          <motion.section 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.6 }}
+            className="mb-8"
+          >
+            <h2 className="text-lg font-bold mb-4 text-black uppercase tracking-wider border-b border-gray-300 pb-1">
+              Professional Summary
+            </h2>
+            <div className="space-y-3">
+              {data.personal.about.map((paragraph, index) => (
+                <p key={index} className="text-sm text-gray-700 leading-relaxed text-justify">
+                  {paragraph}
+                </p>
+              ))}
+            </div>
+          </motion.section>
 
-                {/* Contact Info */}
-                <motion.div 
-                    className="mb-12 text-center"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.1 }}
-                >
-                    {data.contact.socialLinks.map((link, index) => {
-                        const Icon = iconMap[link.icon]
-                        return (
-                            <a
-                                key={link.name}
-                                href={link.href}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="mx-2 inline-flex items-center text-muted-foreground hover:text-foreground transition-colors"
-                            >
-                                <Icon className="h-4 w-4 mr-1" />
-                                {link.username}
-                                {index < data.contact.socialLinks.length - 1 && " • "}
-                            </a>
-                        )
-                    })}
-                </motion.div>
+          {/* Professional Experience */}
+          <motion.section 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.6 }}
+            className="mb-8"
+          >
+            <h2 className="text-lg font-bold mb-4 text-black uppercase tracking-wider border-b border-gray-300 pb-1">
+              Professional Experience
+            </h2>
+            <div className="space-y-6">
+              {Array.from(new Set(data.experience.map(exp => exp.company))).map(company => {
+                const companyExperiences = data.experience
+                  .filter(exp => exp.company === company)
+                  .sort((a, b) => {
+                    const dateA = new Date(a.period.split(' - ')[0]);
+                    const dateB = new Date(b.period.split(' - ')[0]);
+                    return dateB.getTime() - dateA.getTime();
+                  });
 
-                {/* Summary */}
-                <motion.section 
-                    className="mb-12"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.2 }}
-                >
-                    <h2 className="text-2xl font-bold mb-4">Summary</h2>
-                    <div className="space-y-4">
-                        {data.personal.about.map((paragraph, index) => (
-                            <p key={index} className="text-muted-foreground">{paragraph}</p>
-                        ))}
-                    </div>
-                </motion.section>
+                return (
+                  <div key={company} className="break-inside-avoid">
+                    <h3 className="text-base font-bold text-black mb-3">{company}</h3>
+                    {companyExperiences.map((exp, index) => (
+                      <div key={index} className={`${index < companyExperiences.length - 1 ? 'mb-4' : ''}`}>
+                        <div className="flex justify-between items-start mb-2">
+                          <h4 className="text-sm font-semibold text-gray-800 flex-1">{exp.title}</h4>
+                          <span className="text-xs text-gray-600 font-medium ml-4">{exp.period}</span>
+                        </div>
+                        
+                        <ul className="space-y-1 mb-3">
+                          {exp.description.map((desc, i) => (
+                            <li key={i} className="text-xs text-gray-700 leading-relaxed pl-4 relative">
+                              <span className="absolute left-0 text-gray-500">•</span>
+                              {desc}
+                            </li>
+                          ))}
+                        </ul>
+                        
+                        <div className="mt-2">
+                          <p className="text-xs font-semibold text-gray-600 mb-1">Key Technologies:</p>
+                          <p className="text-xs text-gray-600 leading-tight">
+                            {exp.technologies.join(' • ')}
+                          </p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                );
+              })}
+            </div>
+          </motion.section>
 
-                {/* Experience */}
-                <motion.section 
-                    className="mb-12"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.2 }}
-                >
-                    <h2 className="text-2xl font-bold mb-6">Experience</h2>
-                    <div className="space-y-8">
-                        {Array.from(new Set(data.experience.map(exp => exp.company))).map(company => {
-                            const companyExperiences = data.experience
-                                .filter(exp => exp.company === company)
-                                .sort((a, b) => {
-                                    const dateA = new Date(a.period.split(' - ')[0]);
-                                    const dateB = new Date(b.period.split(' - ')[0]);
-                                    return dateB.getTime() - dateA.getTime();
-                                });
+          {/* Education */}
+          <motion.section 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.6 }}
+            className="mb-8"
+          >
+            <h2 className="text-lg font-bold mb-4 text-black uppercase tracking-wider border-b border-gray-300 pb-1">
+              Education
+            </h2>
+            <div className="space-y-4">
+              {data.personal.education.map((edu, index) => (
+                <div key={index} className="break-inside-avoid">
+                  <h3 className="text-sm font-semibold text-black mb-1">{edu.degree}</h3>
+                  <p className="text-sm text-gray-700 mb-1">{edu.school}</p>
+                  <p className="text-xs text-gray-600">{edu.period}</p>
+                </div>
+              ))}
+            </div>
+          </motion.section>
 
-                            return (
-                                <div key={company} className="border-l-2 border-primary/20 pl-4">
-                                    <h3 className="text-xl font-semibold text-primary mb-2">{company}</h3>
-                                    {companyExperiences.map((exp, index) => (
-                                        <div key={index} className="mb-6">
-                                            <div className="flex justify-between items-start mb-2">
-                                                <h4 className="font-medium">{exp.title}</h4>
-                                                <span className="text-sm text-muted-foreground">{exp.period}</span>
-                                            </div>
-                                            <ul className="list-disc list-inside space-y-1 text-muted-foreground">
-                                                {exp.description.map((desc, i) => (
-                                                    <li key={i}>{desc}</li>
-                                                ))}
-                                            </ul>
-                                            <div className="mt-2 flex flex-wrap gap-2">
-                                                {exp.technologies.map((tech, i) => (
-                                                    <span
-                                                        key={i}
-                                                        className="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full"
-                                                    >
-                                                        {tech}
-                                                    </span>
-                                                ))}
-                                            </div>
-                                        </div>
-                                    ))}
-                                </div>
-                            );
-                        })}
-                    </div>
-                </motion.section>
+          {/* Technical Skills */}
+          <motion.section 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5, duration: 0.6 }}
+            className="mb-8"
+          >
+            <h2 className="text-lg font-bold mb-4 text-black uppercase tracking-wider border-b border-gray-300 pb-1">
+              Technical Skills
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {Array.from(new Set(data.skills.map((skill) => skill.category))).map((category) => (
+                <div key={category} className="break-inside-avoid">
+                  <h3 className="text-sm font-semibold text-black mb-3 border-b border-gray-200 pb-1">
+                    {category}
+                  </h3>
+                  <div className="space-y-1">
+                    {data.skills
+                      .filter((skill) => skill.category === category)
+                      .map((skill) => (
+                        <div key={skill.name} className="flex justify-between items-center">
+                          <span className="text-xs text-gray-700">{skill.name}</span>
+                          <span className="text-xs text-gray-500 font-medium">{skill.level}%</span>
+                        </div>
+                      ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </motion.section>
+        </motion.div>
+      </div>
 
-                {/* Education */}
-                <motion.section 
-                    className="mb-12"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.3 }}
-                >
-                    <h2 className="text-2xl font-bold mb-6">Education</h2>
-                    <div className="space-y-4">
-                        {data.personal.education.map((edu, index) => (
-                            <div key={index} className="border-l-2 border-primary/20 pl-4">
-                                <h3 className="font-medium">{edu.degree}</h3>
-                                <p className="text-muted-foreground">{edu.school} • {edu.period}</p>
-                            </div>
-                        ))}
-                    </div>
-                </motion.section>
-
-                {/* Skills */}
-                <motion.section 
-                    className="mb-12"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.4 }}
-                >
-                    <h2 className="text-2xl font-bold mb-6">Skills</h2>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        {Array.from(new Set(data.skills.map((skill) => skill.category))).map((category) => (
-                            <div key={category}>
-                                <h3 className="font-semibold mb-2">{category}</h3>
-                                <ul className="space-y-1">
-                                    {data.skills
-                                        .filter((skill) => skill.category === category)
-                                        .map((skill) => (
-                                            <li key={skill.name} className="text-muted-foreground">
-                                                {skill.name} ({skill.level}%)
-                                            </li>
-                                        ))}
-                                </ul>
-                            </div>
-                        ))}
-                    </div>
-                </motion.section>
-            </main>
-        </div>
-    )
+      {/* Print Styles */}
+      <style jsx>{`
+        @media print {
+          body {
+            margin: 0 !important;
+            padding: 0 !important;
+          }
+          
+          .fixed {
+            display: none !important;
+          }
+          
+          * {
+            -webkit-print-color-adjust: exact !important;
+            color-adjust: exact !important;
+          }
+        }
+      `}</style>
+    </div>
+  )
 } 
