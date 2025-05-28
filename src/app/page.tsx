@@ -83,8 +83,8 @@ export default function Home() {
             />
 
             {/* Hero Section */}
-            <section id="hero" className="relative flex min-h-screen flex-col items-center justify-start bg-gradient-to-b from-background to-background/80 pt-32 pb-16 sm:pt-40 sm:pb-24">
-                <div className="flex flex-col items-center gap-8 text-center px-4">
+            <section id="hero" className="relative flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-background to-background/80 pt-16 pb-16">
+                <div className="flex flex-col items-center gap-8 text-center px-4 flex-1 justify-center">
                     <div className="relative h-48 w-48 sm:h-56 sm:w-56 overflow-hidden rounded-full bg-muted ring-4 ring-primary ring-offset-2 ring-offset-background">
                         <div className="flex h-full w-full items-center justify-center">
                             <Image
@@ -125,7 +125,7 @@ export default function Home() {
                     </motion.p>
                 </div>
                 <motion.div 
-                    className="absolute bottom-12 left-1/2 -translate-x-1/2"
+                    className="flex flex-col items-center justify-end pb-8"
                     initial={{ opacity: 1, y: 0 }}
                     animate={{ 
                         y: [0, 10, 0],
@@ -391,6 +391,33 @@ export default function Home() {
                         <h4 className="mb-4 text-2xl font-semibold">Let's Connect</h4>
                         <p className="text-muted-foreground">
                             {data.contact.message}
+                        </p>
+                    </motion.div>
+                    
+                    {/* Academic Website Section */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="mt-12 p-4 bg-accent/10 rounded-lg border border-accent/20"
+                    >
+                        <div className="flex items-center justify-center gap-2 mb-2">
+                            <User className="h-5 w-5 text-primary" />
+                            <h4 className="text-lg font-semibold text-foreground">Academic Work</h4>
+                        </div>
+                        <p className="text-base text-muted-foreground text-center">
+                            Looking for my academic research and publications? Visit my{" "}
+                            <a 
+                                href="https://academic.kvasilopoulos.com" 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                className="text-primary hover:underline font-semibold text-lg"
+                            >
+                                academic website
+                            </a>
+                        </p>
+                        <p className="text-sm text-muted-foreground/80 mt-1 text-center">
+                            (archived site, no longer maintained)
                         </p>
                     </motion.div>
                 </div>

@@ -9,13 +9,12 @@ import { Button } from "@/components/ui/button"
 import { usePathname, useRouter } from "next/navigation"
 
 const navItems = [
-    { name: "Home", path: "/" },
-    { name: "About", path: "/#about" },
-    { name: "Skills", path: "/#skills" },
-    { name: "Experience", path: "/#experience" },
-    // { name: "Projects", path: "/#projects" },
-    { name: "Contact", path: "/#contact" },
-    { name: "CV", path: "/cv" },
+    { name: "Home", path: "/", section: "hero" },
+    { name: "About", path: "/#about", section: "about" },
+    { name: "Skills", path: "/#skills", section: "skills" },
+    { name: "Experience", path: "/#experience", section: "experience" },
+    { name: "Contact", path: "/#contact", section: "contact" },
+    { name: "CV", path: "/cv", section: null },
 ]
 
 export function Navbar() {
@@ -40,22 +39,44 @@ export function Navbar() {
         const handleScroll = () => {
             if (pathname !== '/') return // Only handle scroll on home page
             
-            const sections = navItems
-                .filter(item => item.path.startsWith('/#'))
-                .map(item => item.path.substring(2))
+            const sections = ["hero", "about", "skills", "experience", "contact"]
             const currentPosition = window.scrollY + 100
+            const windowHeight = window.innerHeight
+            const documentHeight = document.documentElement.scrollHeight
 
+            // Check if we're near the bottom of the page (within 100px)
+            const nearBottom = currentPosition + windowHeight >= documentHeight - 100
+
+            // If we're near the bottom, activate contact section
+            if (nearBottom) {
+                setActiveSection("contact")
+                return
+            }
+
+            // Check each section from bottom to top
             for (let i = sections.length - 1; i >= 0; i--) {
                 const section = document.getElementById(sections[i])
-                if (section && section.offsetTop <= currentPosition) {
-                    setActiveSection(sections[i])
-                    break
+                if (section) {
+                    const sectionTop = section.offsetTop
+                    const sectionHeight = section.offsetHeight
+                    const sectionBottom = sectionTop + sectionHeight
+
+                    // If we're in this section
+                    if (currentPosition >= sectionTop && currentPosition < sectionBottom) {
+                        setActiveSection(sections[i])
+                        break
+                    }
                 }
             }
         }
 
-        window.addEventListener('scroll', handleScroll)
-        handleScroll() // Initialize on mount
+        if (pathname === '/') {
+            window.addEventListener('scroll', handleScroll)
+            handleScroll() // Initialize on mount
+        } else {
+            // If not on home page, clear active section
+            setActiveSection("")
+        }
 
         return () => {
             window.removeEventListener('scroll', handleScroll)
@@ -94,6 +115,17 @@ export function Navbar() {
         }
     }
 
+    const isItemActive = (item: typeof navItems[0]) => {
+        if (item.path === "/cv") {
+            return isCV
+        } else if (item.section) {
+            return isHome && activeSection === item.section
+        } else if (item.path === "/") {
+            return isHome && activeSection === "hero"
+        }
+        return false
+    }
+
     return (
         <motion.nav 
             className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -111,25 +143,26 @@ export function Navbar() {
 
                     {/* Desktop Navigation */}
                     <div className="hidden md:flex items-center space-x-8">
-                        {navItems.map((item) => (
-                            <a
-                                key={item.path}
-                                href={item.path}
-                                onClick={(e) => handleNavClick(e, item.path)}
-                                className={`text-muted-foreground hover:text-foreground transition-colors relative group ${
-                                    item.path.startsWith('/#') 
-                                        ? activeSection === item.path.substring(2) 
-                                            ? "text-foreground" 
-                                            : "text-foreground/60"
-                                        : pathname === item.path 
-                                            ? "text-foreground" 
-                                            : "text-foreground/60"
-                                }`}
-                            >
-                                {item.name}
-                                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
-                            </a>
-                        ))}
+                        {navItems.map((item) => {
+                            const isActive = isItemActive(item)
+                            return (
+                                <a
+                                    key={item.path}
+                                    href={item.path}
+                                    onClick={(e) => handleNavClick(e, item.path)}
+                                    className={`transition-colors relative group ${
+                                        isActive 
+                                            ? "text-primary font-medium" 
+                                            : "text-muted-foreground hover:text-foreground"
+                                    }`}
+                                >
+                                    {item.name}
+                                    <span className={`absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-300 ${
+                                        isActive ? "w-full" : "w-0 group-hover:w-full"
+                                    }`} />
+                                </a>
+                            )
+                        })}
                         <Button
                             variant="ghost"
                             size="icon"
@@ -178,19 +211,26 @@ export function Navbar() {
                             className="md:hidden overflow-hidden"
                         >
                             <div className="py-4 space-y-4">
-                                {navItems.map((item) => (
-                                    <a
-                                        key={item.path}
-                                        href={item.path}
-                                        onClick={(e) => {
-                                            handleNavClick(e, item.path)
-                                            setIsOpen(false)
-                                        }}
-                                        className="block text-muted-foreground hover:text-foreground transition-colors py-2"
-                                    >
-                                        {item.name}
-                                    </a>
-                                ))}
+                                {navItems.map((item) => {
+                                    const isActive = isItemActive(item)
+                                    return (
+                                        <a
+                                            key={item.path}
+                                            href={item.path}
+                                            onClick={(e) => {
+                                                handleNavClick(e, item.path)
+                                                setIsOpen(false)
+                                            }}
+                                            className={`block transition-colors py-2 ${
+                                                isActive 
+                                                    ? "text-primary font-medium" 
+                                                    : "text-muted-foreground hover:text-foreground"
+                                            }`}
+                                        >
+                                            {item.name}
+                                        </a>
+                                    )
+                                })}
                             </div>
                         </motion.div>
                     )}
