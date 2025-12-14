@@ -11,9 +11,14 @@ import { usePathname, useRouter } from "next/navigation"
 const navItems = [
     { name: "Home", path: "/", section: "hero" },
     { name: "About", path: "/#about", section: "about" },
-    { name: "Skills", path: "/#skills", section: "skills" },
     { name: "Experience", path: "/#experience", section: "experience" },
+    { name: "Education", path: "/#education", section: "education" },
+    
     { name: "Contact", path: "/#contact", section: "contact" },
+]
+
+const otherNavItems = [
+    { name: "Projects", path: "/projects", section: null },
     { name: "CV", path: "/cv", section: null },
 ]
 
@@ -26,6 +31,7 @@ export function Navbar() {
     const router = useRouter()
     const isHome = pathname === "/"
     const isCV = pathname === "/cv"
+    const isProjects = pathname === "/projects"
 
     React.useEffect(() => {
         const handleScroll = () => {
@@ -39,7 +45,7 @@ export function Navbar() {
         const handleScroll = () => {
             if (pathname !== '/') return // Only handle scroll on home page
             
-            const sections = ["hero", "about", "skills", "experience", "contact"]
+            const sections = ["hero", "about", "experience", "education", "contact"]
             const currentPosition = window.scrollY + 100
             const windowHeight = window.innerHeight
             const documentHeight = document.documentElement.scrollHeight
@@ -86,8 +92,8 @@ export function Navbar() {
     const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, path: string) => {
         e.preventDefault()
         if (path.startsWith('/#')) {
-            if (isCV) {
-                // If we're on the CV page, first navigate to home
+            if (isCV || isProjects) {
+                // If we're on the CV or Projects page, first navigate to home
                 router.push('/')
                 // Wait for navigation to complete before scrolling
                 setTimeout(() => {
@@ -115,9 +121,11 @@ export function Navbar() {
         }
     }
 
-    const isItemActive = (item: typeof navItems[0]) => {
+    const isItemActive = (item: typeof navItems[0] | typeof otherNavItems[0]) => {
         if (item.path === "/cv") {
             return isCV
+        } else if (item.path === "/projects") {
+            return isProjects
         } else if (item.section) {
             return isHome && activeSection === item.section
         } else if (item.path === "/") {
@@ -144,6 +152,27 @@ export function Navbar() {
                     {/* Desktop Navigation */}
                     <div className="hidden md:flex items-center space-x-8">
                         {navItems.map((item) => {
+                            const isActive = isItemActive(item)
+                            return (
+                                <a
+                                    key={item.path}
+                                    href={item.path}
+                                    onClick={(e) => handleNavClick(e, item.path)}
+                                    className={`transition-colors relative group ${
+                                        isActive 
+                                            ? "text-primary font-medium" 
+                                            : "text-muted-foreground hover:text-foreground"
+                                    }`}
+                                >
+                                    {item.name}
+                                    <span className={`absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-300 ${
+                                        isActive ? "w-full" : "w-0 group-hover:w-full"
+                                    }`} />
+                                </a>
+                            )
+                        })}
+                        <div className="h-6 w-px bg-border mx-2" />
+                        {otherNavItems.map((item) => {
                             const isActive = isItemActive(item)
                             return (
                                 <a
@@ -212,6 +241,27 @@ export function Navbar() {
                         >
                             <div className="py-4 space-y-4">
                                 {navItems.map((item) => {
+                                    const isActive = isItemActive(item)
+                                    return (
+                                        <a
+                                            key={item.path}
+                                            href={item.path}
+                                            onClick={(e) => {
+                                                handleNavClick(e, item.path)
+                                                setIsOpen(false)
+                                            }}
+                                            className={`block transition-colors py-2 ${
+                                                isActive 
+                                                    ? "text-primary font-medium" 
+                                                    : "text-muted-foreground hover:text-foreground"
+                                            }`}
+                                        >
+                                            {item.name}
+                                        </a>
+                                    )
+                                })}
+                                <div className="h-px bg-border my-2" />
+                                {otherNavItems.map((item) => {
                                     const isActive = isItemActive(item)
                                     return (
                                         <a

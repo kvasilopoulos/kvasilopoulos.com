@@ -4,9 +4,8 @@ import * as React from "react"
 import Image from "next/image"
 import { motion, useScroll } from "framer-motion"
 import { useInView } from "react-intersection-observer"
-import { Github, ExternalLink, Linkedin, Mail, Twitter, User, ArrowDown } from "lucide-react"
+import { Github, ExternalLink, Linkedin, Mail, Twitter, User, ArrowDown, GraduationCap, Award, BookOpen, FileText } from "lucide-react"
 import data from "../data/data.json"
-import { Navbar } from "@/components/Navbar"
 import { IconMap } from "@/types"
 
 // Animation variants
@@ -61,6 +60,31 @@ function SkillCategory({ category, skills }: { category: string; skills: typeof 
     )
 }
 
+// Helper function to parse markdown-style bold text (**text**) and render it
+function parseBoldText(text: string): React.ReactNode {
+    const parts: React.ReactNode[] = []
+    const regex = /\*\*(.*?)\*\*/g
+    let lastIndex = 0
+    let match
+
+    while ((match = regex.exec(text)) !== null) {
+        // Add text before the match
+        if (match.index > lastIndex) {
+            parts.push(text.substring(lastIndex, match.index))
+        }
+        // Add the bold text
+        parts.push(<strong key={match.index} className="font-semibold">{match[1]}</strong>)
+        lastIndex = regex.lastIndex
+    }
+
+    // Add remaining text
+    if (lastIndex < text.length) {
+        parts.push(text.substring(lastIndex))
+    }
+
+    return parts.length > 0 ? <>{parts}</> : text
+}
+
 export default function Home() {
     const { scrollYProgress } = useScroll()
     
@@ -74,8 +98,6 @@ export default function Home() {
     
     return (
         <div className="relative">
-            <Navbar />
-            
             {/* Progress bar */}
             <motion.div 
                 className="fixed top-16 left-0 right-0 h-1 bg-primary z-50" 
@@ -112,7 +134,6 @@ export default function Home() {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: 0.2 }}
                         >
-                            AI/ML Engineer @ Pfizer | Econ (Ph.D.)
                             {data.personal.title}
                         </motion.p>
                     </div>
@@ -122,8 +143,6 @@ export default function Home() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.4 }}
                     >
-                        I specialize in integrating and scaling Large Language Models across enterprise platforms,
-                        with expertise in MLOps, responsible AI, and translating advanced econometric theory into production-grade software.
                         {data.personal.subtitle}
                     </motion.p>
                 </div>
@@ -172,93 +191,38 @@ export default function Home() {
                                 {paragraph}
                             </motion.p>
                         ))}
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                            <motion.div
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.5, delay: 0.4 }}
-                            >
-                                <h3 className="mb-4 text-xl font-medium">Core Expertise</h3>
-                                <ul className="list-inside list-disc space-y-2 text-lg">
-                                    <li>Large Language Models (LLMs) & Enterprise AI</li>
-                                    <li>Machine Learning Operations (MLOps)</li>
-                                    <li>Natural Language Processing</li>
-                                    <li>Responsible & Ethical AI</li>
-                                    <li>Distributed Systems & Kubernetes</li>
-                                    <li>Econometric Modeling & Time Series Analysis</li>
-                                    {data.personal.expertise.map((item, index) => (
-                                        <li key={index}>{item}</li>
-                                    ))}
-                                </ul>
-                            </motion.div>
-                            <motion.div
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.5, delay: 0.5 }}
-                                className="space-y-4"
-                            >
-                                <h4 className="mb-4 text-xl font-medium">Education</h4>
-                                {data.personal.education.map((edu, index) => (
-                                    <div key={index} className="rounded-lg border bg-card p-3 shadow-sm">
-                                        <h5 className="text-lg font-medium">{edu.degree}</h5>
-                                        <p className="text-muted-foreground">{edu.school} • {edu.period}</p>
-                                    </div>
-                                ))}
-                            </motion.div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* Skills Section */}
-            <section id="skills" className="py-20">
-                <div className="container mx-auto max-w-4xl px-4">
-                    <motion.h2 
-                        className="mb-8 text-3xl font-bold text-center sm:text-4xl"
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.5 }}
-                    >
-                        Skills & Expertise
-                    </motion.h2>
-                    <motion.p 
-                        className="mb-10 text-lg text-muted-foreground text-center"
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.5, delay: 0.1 }}
-                    >
-                        Here's an overview of my technical skills and proficiency levels.
-                    </motion.p>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-12">
-                        {Array.from(new Set(data.skills.map((skill) => skill.category))).map((category) => (
-                            <div key={category}>
-                                <h3 className="mb-6 text-xl font-semibold">{category}</h3>
-                                <div>
-                                    {data.skills
-                                        .filter((skill) => skill.category === category)
-                                        .map((skill) => (
-                                            <div key={skill.name} className="mb-4">
-                                                <div className="mb-2">
-                                                    <span className="font-medium">{skill.name}</span>
-                                                </div>
-                                                <div className="h-2 w-full rounded-full bg-secondary">
-                                                    <motion.div
-                                                        className="h-full rounded-full bg-primary"
-                                                        initial={{ width: 0 }}
-                                                        whileInView={{ width: `${skill.level}%` }}
-                                                        viewport={{ once: true }}
-                                                        transition={{ duration: 1, ease: "easeOut" }}
-                                                    />
-                                                </div>
-                                            </div>
-                                        ))}
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.5, delay: 0.3 }}
+                            className="mt-8 rounded-lg p-6 shadow-sm"
+                        >
+                            <h3 className="mb-8 text-2xl font-bold border-b pb-3">Core Expertise & Skills</h3>
+                            <div className="space-y-10">
+                                <div className="rounded-md bg-accent/5 p-5 border border-accent/20">
+                                    <h4 className="mb-4 text-xl font-semibold text-primary border-b border-primary/20 pb-2">AI & Machine Learning</h4>
+                                    <ul className="list-inside list-disc space-y-3 text-base leading-relaxed">
+                                        <li className="pl-2">Generative AI & Large Language Models (<strong className="text-primary">RAG</strong>, <strong className="text-primary">embeddings</strong>, <strong className="text-primary">fine-tuning</strong>)</li>
+                                        <li className="pl-2">Natural Language Processing & Text Analytics</li>
+                                        <li className="pl-2">Production ML Operations & Model Lifecycle (model deployment, versioning, automated pipelines)</li>
+                                        <li className="pl-2">Model Evaluation, Monitoring & Drift Detection</li>
+                                    </ul>
                                 </div>
-                            </motion.div>
-                        ))}
+                                <div className="rounded-md bg-accent/5 p-5 border border-accent/20">
+                                    <h4 className="mb-4 text-xl font-semibold text-primary border-b border-primary/20 pb-2">Engineering & Infra</h4>
+                                    <ul className="list-inside list-disc space-y-3 text-base leading-relaxed">
+                                        <li className="pl-2">Programming: <strong className="text-primary">Python</strong>, <strong className="text-primary">R</strong>, <strong className="text-primary">SQL</strong>, <strong className="text-primary">JavaScript</strong>, <strong className="text-primary">C++</strong></li>
+                                        <li className="pl-2">Distributed Computing & <strong className="text-primary">Microservices</strong> Architecture (horizontally scalable systems, service-oriented architecture)</li>
+                                        <li className="pl-2">Cloud & Containers: <strong className="text-primary">AWS</strong>, <strong className="text-primary">Azure</strong>, <strong className="text-primary">Docker</strong>, <strong className="text-primary">Kubernetes</strong></li>
+                                        <li className="pl-2">Scalability & Performance Optimization (throughput optimization, cost reduction, runtime efficiency)</li>
+                                        <li className="pl-2">Web Development & <strong className="text-primary">REST APIs</strong></li>
+                                        <li className="pl-2">Data Engineering: <strong className="text-primary">ElasticSearch</strong>, <strong className="text-primary">Postgres</strong>, <strong className="text-primary">Kafka</strong>, <strong className="text-primary">NoSQL</strong> (search, storage, streaming)</li>
+                                        <li className="pl-2">DevOps: <strong className="text-primary">Git</strong>, <strong className="text-primary">Linux</strong>, <strong className="text-primary">CI/CD</strong> Pipelines</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </motion.div>
                     </div>
                 </div>
             </section>
@@ -267,7 +231,7 @@ export default function Home() {
             <section id="experience" className="py-20 bg-accent/5">
                 <div className="container mx-auto max-w-4xl px-4">
                     <motion.h2 
-                        className="mb-8 text-3xl font-bold text-center sm:text-4xl"
+                        className="mb-12 text-3xl font-bold text-center sm:text-4xl"
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
@@ -280,7 +244,7 @@ export default function Home() {
                         initial="hidden"
                         whileInView="show"
                         viewport={{ once: true }}
-                        className="space-y-12"
+                        className="space-y-8"
                     >
                         {Array.from(new Set(data.experience.map(exp => exp.company))).map(company => {
                             const companyExperiences = data.experience
@@ -295,33 +259,45 @@ export default function Home() {
                                 <motion.div
                                     key={company}
                                     variants={item}
-                                    className="rounded-lg border bg-card p-6 shadow-sm"
+                                    className="rounded-lg border border-accent/20 bg-card p-6 sm:p-8 shadow-sm hover:shadow-md transition-shadow"
                                 >
-                                    <div className="mb-6">
+                                    <div className="mb-8 pb-4 border-b border-accent/20">
                                         <h3 className="text-2xl font-semibold text-primary">{company}</h3>
                                     </div>
-                                    <div className="space-y-8">
+                                    <div className="space-y-10">
                                         {companyExperiences.map((exp, index) => (
-                                            <div key={index} className="relative pl-6 border-l-2 border-primary/20">
-                                                <div className="absolute -left-[9px] top-0 h-4 w-4 rounded-full bg-primary/20" />
-                                                <div className="mb-4">
-                                                    <h4 className="text-xl font-semibold">{exp.title}</h4>
-                                                    <div className="mt-1 flex items-center gap-2 text-muted-foreground">
-                                                        <span>{exp.period}</span>
+                                            <div key={index} className="relative pl-8 border-l-2 border-primary/30">
+                                                <div className="absolute -left-[10px] top-0 h-5 w-5 rounded-full bg-primary border-2 border-background shadow-sm" />
+                                                <div className="mb-5">
+                                                    <h4 className="text-xl font-bold mb-2 text-foreground">{exp.title}</h4>
+                                                    <div className="flex flex-wrap items-center gap-2 text-sm text-foreground/70">
+                                                        <span className="font-medium">{exp.period}</span>
+                                                        {exp.location && (
+                                                            <>
+                                                                <span className="text-foreground/40">•</span>
+                                                                <span>{exp.location}</span>
+                                                            </>
+                                                        )}
                                                     </div>
+                                                    {exp.promoted && (
+                                                        <p className="mt-2 text-sm italic text-foreground/70 bg-accent/30 px-3 py-1 rounded-md inline-block">
+                                                            {exp.promoted}
+                                                        </p>
+                                                    )}
                                                 </div>
-                                                <ul className="mb-4 list-inside list-disc space-y-2">
+                                                <ul className="mb-5 space-y-3">
                                                     {exp.description.map((desc, i) => (
-                                                        <li key={i} className="text-muted-foreground">
-                                                            {desc}
+                                                        <li key={i} className="text-foreground/85 leading-relaxed flex items-start gap-3">
+                                                            <span className="text-primary mt-1.5 flex-shrink-0 font-bold">▸</span>
+                                                            <span>{parseBoldText(desc)}</span>
                                                         </li>
                                                     ))}
                                                 </ul>
-                                                <div className="flex flex-wrap gap-2">
+                                                <div className="flex flex-wrap items-center gap-2 mt-6 pt-4 border-t border-accent/20">
                                                     {exp.technologies.map((tech, i) => (
                                                         <span
                                                             key={i}
-                                                            className="rounded-full bg-primary/10 px-3 py-1 text-sm text-primary"
+                                                            className="inline-flex items-center rounded-full bg-accent/30 px-3 py-1 text-sm font-medium text-foreground/80 border border-accent/40"
                                                         >
                                                             {tech}
                                                         </span>
@@ -334,6 +310,114 @@ export default function Home() {
                             );
                         })}
                     </motion.div>
+                </div>
+            </section>
+
+            {/* Education, Publications & Awards Section */}
+            <section id="education" className="py-20">
+                <div className="container mx-auto max-w-4xl px-4">
+                    <motion.h2 
+                        className="mb-8 text-3xl font-bold text-center sm:text-4xl"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5 }}
+                    >
+                        Education, Publications & Awards
+                    </motion.h2>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        {/* Education & Awards */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.5 }}
+                            className="rounded-lg bg-card p-6 shadow-sm"
+                        >
+                            <h3 className="mb-6 text-xl font-semibold border-b pb-2">Education</h3>
+                            <div className="space-y-4 mb-8">
+                                {data.personal.education.map((edu, index) => (
+                                    <div key={index} className="pb-4 border-b border-accent/20 last:border-b-0 last:pb-0 flex gap-3">
+                                        <div className="flex-shrink-0 mt-1">
+                                            <GraduationCap className="h-5 w-5 text-primary" />
+                                        </div>
+                                        <div className="flex-1">
+                                            <h4 className="text-lg font-medium mb-1">{edu.degree}</h4>
+                                            <p className="text-muted-foreground text-sm">{edu.school}</p>
+                                            <p className="text-muted-foreground text-sm">{edu.period}</p>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                            <h3 className="mb-6 text-xl font-semibold border-b pb-2 mt-8">Awards & Achievements</h3>
+                            <div className="space-y-4">
+                                {data.awards.map((award, index) => (
+                                    <div key={index} className="pb-4 border-b border-accent/20 last:border-b-0 last:pb-0 flex gap-3">
+                                        <div className="flex-shrink-0 mt-1">
+                                            <Award className="h-5 w-5 text-primary" />
+                                        </div>
+                                        <div className="flex-1">
+                                            <h4 className="text-base font-medium mb-1">{award.title}</h4>
+                                            <p className="text-sm text-muted-foreground">{award.institution}</p>
+                                            {award.period && (
+                                                <p className="text-sm text-muted-foreground">{award.period}</p>
+                                            )}
+                                            {award.description && (
+                                                <p className="text-sm text-muted-foreground mt-1">{award.description}</p>
+                                            )}
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </motion.div>
+
+                        {/* Publications & Thesis */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.5, delay: 0.1 }}
+                            className="rounded-lg bg-card p-6 shadow-sm"
+                        >
+                            <h3 className="mb-6 text-xl font-semibold border-b pb-2">Selected Publications</h3>
+                            <div className="space-y-4 mb-8">
+                                {data.publications.map((pub, index) => (
+                                    <div key={index} className="pb-4 border-b border-accent/20 last:border-b-0 last:pb-0 flex gap-3">
+                                        <div className="flex-shrink-0 mt-1">
+                                            <BookOpen className="h-5 w-5 text-primary" />
+                                        </div>
+                                        <div className="flex-1">
+                                            <h4 className="text-base font-medium mb-2">{pub.title}</h4>
+                                            <p className="text-sm text-muted-foreground mb-1">{pub.authors}</p>
+                                            <p className="text-sm text-muted-foreground">
+                                                <em>{pub.journal}</em>
+                                                {pub.volume && `, ${pub.volume}`}
+                                                {pub.pages && `, ${pub.pages}`}
+                                                {pub.year && ` (${pub.year})`}
+                                            </p>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                            {data.personal.thesis && (
+                                <div className="mt-8">
+                                    <h3 className="mb-6 text-xl font-semibold border-b pb-2">Thesis</h3>
+                                    <div className="pb-4 flex gap-3">
+                                        <div className="flex-shrink-0 mt-1">
+                                            <FileText className="h-5 w-5 text-primary" />
+                                        </div>
+                                        <div className="flex-1">
+                                            <h4 className="text-base font-medium mb-1">{data.personal.thesis.title}</h4>
+                                            <p className="text-sm text-muted-foreground">
+                                                <em>{data.personal.thesis.publisher}</em>
+                                                {data.personal.thesis.year && ` (${data.personal.thesis.year})`}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            )}
+                        </motion.div>
+                    </div>
                 </div>
             </section>
 
