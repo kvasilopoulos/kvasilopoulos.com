@@ -112,6 +112,7 @@ export default function Home() {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: 0.2 }}
                         >
+                            AI/ML Engineer @ Pfizer | Econ (Ph.D.)
                             {data.personal.title}
                         </motion.p>
                     </div>
@@ -121,6 +122,8 @@ export default function Home() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.4 }}
                     >
+                        I specialize in integrating and scaling Large Language Models across enterprise platforms,
+                        with expertise in MLOps, responsible AI, and translating advanced econometric theory into production-grade software.
                         {data.personal.subtitle}
                     </motion.p>
                 </div>
@@ -176,8 +179,14 @@ export default function Home() {
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.5, delay: 0.4 }}
                             >
-                                <h4 className="mb-4 text-xl font-medium">Expertise</h4>
+                                <h3 className="mb-4 text-xl font-medium">Core Expertise</h3>
                                 <ul className="list-inside list-disc space-y-2 text-lg">
+                                    <li>Large Language Models (LLMs) & Enterprise AI</li>
+                                    <li>Machine Learning Operations (MLOps)</li>
+                                    <li>Natural Language Processing</li>
+                                    <li>Responsible & Ethical AI</li>
+                                    <li>Distributed Systems & Kubernetes</li>
+                                    <li>Econometric Modeling & Time Series Analysis</li>
                                     {data.personal.expertise.map((item, index) => (
                                         <li key={index}>{item}</li>
                                     ))}
@@ -248,7 +257,7 @@ export default function Home() {
                                             </div>
                                         ))}
                                 </div>
-                            </div>
+                            </motion.div>
                         ))}
                     </div>
                 </div>
@@ -422,7 +431,7 @@ export default function Home() {
                     </motion.div>
                 </div>
             </section>
-
+            
             {/* Footer */}
             <footer className="py-8 border-t">
                 <div className="container mx-auto text-center">
