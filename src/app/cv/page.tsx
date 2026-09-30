@@ -14,6 +14,7 @@
 import { motion } from "framer-motion"
 import data from "../../data/data.json"
 
+import { parseBoldText } from "@/lib/parseBoldText"
 export default function CVPage() {
   return (
     <div className="min-h-screen bg-white">
@@ -116,7 +117,7 @@ export default function CVPage() {
                           {exp.description.map((desc, i) => (
                             <li key={i} className="text-xs text-gray-700 leading-relaxed pl-4 relative">
                               <span className="absolute left-0 text-gray-500">•</span>
-                              {desc}
+                              {parseBoldText(desc)}
                             </li>
                           ))}
                         </ul>

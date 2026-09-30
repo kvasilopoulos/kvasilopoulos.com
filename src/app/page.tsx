@@ -7,6 +7,7 @@ import { useInView } from "react-intersection-observer"
 import { Github, ExternalLink, Linkedin, Mail, Twitter, User, ArrowDown, GraduationCap, Award, BookOpen, FileText } from "lucide-react"
 import data from "../data/data.json"
 import { IconMap } from "@/types"
+import { parseBoldText } from "@/lib/parseBoldText"
 
 // Animation variants
 const container = {
@@ -58,31 +59,6 @@ function SkillCategory({ category, skills }: { category: string; skills: typeof 
             </div>
         </div>
     )
-}
-
-// Helper function to parse markdown-style bold text (**text**) and render it
-function parseBoldText(text: string): React.ReactNode {
-    const parts: React.ReactNode[] = []
-    const regex = /\*\*(.*?)\*\*/g
-    let lastIndex = 0
-    let match
-
-    while ((match = regex.exec(text)) !== null) {
-        // Add text before the match
-        if (match.index > lastIndex) {
-            parts.push(text.substring(lastIndex, match.index))
-        }
-        // Add the bold text
-        parts.push(<strong key={match.index} className="font-semibold">{match[1]}</strong>)
-        lastIndex = regex.lastIndex
-    }
-
-    // Add remaining text
-    if (lastIndex < text.length) {
-        parts.push(text.substring(lastIndex))
-    }
-
-    return parts.length > 0 ? <>{parts}</> : text
 }
 
 export default function Home() {
