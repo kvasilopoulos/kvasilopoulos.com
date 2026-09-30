@@ -12,12 +12,23 @@
 "use client"
 
 import { motion } from "framer-motion"
+import { Download } from "lucide-react"
 import data from "../../data/data.json"
-
 import { parseBoldText } from "@/lib/parseBoldText"
+
 export default function CVPage() {
   return (
     <div className="min-h-screen bg-white">
+      {/* PDF download (compiled from Overleaf); `fixed` keeps it out of print */}
+      <a
+        href="/assets/Kostas_Vasilopoulos_CV.pdf"
+        download
+        className="fixed bottom-6 right-6 z-50 flex items-center gap-2 rounded-full bg-black px-5 py-3 text-sm font-medium text-white shadow-lg hover:bg-gray-800 transition-colors"
+      >
+        <Download className="h-4 w-4" />
+        Download PDF
+      </a>
+
       {/* A4 Paper Container */}
       <div className="mx-auto" style={{ width: '210mm', minHeight: '297mm' }}>
         {/* Paper Sheet */}
