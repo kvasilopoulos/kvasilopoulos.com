@@ -93,7 +93,7 @@
             "location": "Thessaloniki, Greece",
             "description": [
                 "Own the engineering strategy and roadmap for Pfizer's enterprise **Data Science & GenAI platform (Dataiku)**, serving **1,800+ data scientists** and hosting a large portfolio of production Python services and web apps",
-                "Accountable for platform operations and **$20–40K/month** in platform spend, driving cost controls, observability, and access governance for ML and LLM workloads",
+                "Govern enterprise LLM consumption of **1M+ requests/month** (**$20–40K/month** in LLM usage), driving cost controls, observability, and access governance across production ML and GenAI workloads",
                 "Architect enterprise **GenAI** capabilities (**LLM integrations, RAG**, AI assistants) as reusable platform services that accelerate AI adoption",
                 "Provide **technical leadership** across platform, security, and data science teams and manage a direct report; set engineering standards, APIs, and self-service tooling for regulated environments"
             ],
