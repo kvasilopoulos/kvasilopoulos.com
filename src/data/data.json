@@ -1,7 +1,7 @@
 {
     "personal": {
         "name": "Kostas Vasilopoulos",
-        "title": "AI/ML Engineer @ Pfizer | Econ (Ph.D.)",
+        "title": "AI/ML Platform Engineering @ Pfizer | Econ (Ph.D.)",
         "subtitle": "Specializing in enterprise ML platforms, MLOps execution, and responsible AI systems",
         "about": [
             "I am a Machine Learning Engineer with a Ph.D. in Economics, combining rigorous research methodology with hands-on experience building and operating production ML systems at scale. My background enables me to translate complex analytical and modeling challenges into robust, production-grade engineering solutions.",
@@ -87,40 +87,57 @@
     ],
     "experience": [
         {
-            "title": "Machine Learning Engineer, Manager",
+            "title": "Senior Manager, Data Science Platform Engineering",
             "company": "Pfizer",
-            "period": "May 2023 - Present",
+            "period": "June 2026 - Present",
             "location": "Thessaloniki, Greece",
             "description": [
-                "Technical owner for integrating and scaling **Large Language Models (LLMs)** across an enterprise platform serving **1,800+ users**, addressing reliability, performance, and compliance constraints",
-                "Defined and owned platform-wide standards for **AI service integration**, security, and lifecycle management across multiple teams",
-                "Established and enforced **MLOps** execution patterns for model deployment, monitoring, and access control in production",
-                "**Technical Lead for Ethicara ML**: Led the design and implementation of responsible and ethical AI solutions to align with enterprise and regulatory standards",
-                "Acted as a bridge between **users, system administrators, and engineering teams**, governing platform usage, onboarding, and operational processes at scale",
-                "Drove cross-team adoption of AI capabilities by defining reusable platform abstractions and reference implementations aligned with business needs"
+                "Own the engineering strategy and roadmap for Pfizer's enterprise **Data Science & GenAI platform (Dataiku)**, serving **1,800+ data scientists** and hosting a large portfolio of production Python services and web apps",
+                "Accountable for platform operations and **$20–40K/month** in platform spend, driving cost controls, observability, and access governance for ML and LLM workloads",
+                "Architect enterprise **GenAI** capabilities (**LLM integrations, RAG**, AI assistants) as reusable platform services that accelerate AI adoption",
+                "Provide **technical leadership** across platform, security, and data science teams and manage a direct report; set engineering standards, APIs, and self-service tooling for regulated environments"
             ],
             "technologies": [
-                "Python",
-                "Machine Learning",
+                "Dataiku",
+                "Generative AI",
+                "LLMOps",
+                "Platform Engineering",
+                "Technical Leadership",
+                "Cost Management"
+            ]
+        },
+        {
+            "title": "Machine Learning Engineer, Manager",
+            "company": "Pfizer",
+            "period": "May 2023 - May 2026",
+            "location": "Thessaloniki, Greece",
+            "description": [
+                "Technical owner for integrating and scaling **Large Language Models (LLMs)** on the enterprise Dataiku platform, solving reliability, performance, and compliance constraints hands-on",
+                "Designed **MLOps** execution patterns for model deployment, monitoring, and access control in production, later adopted as **platform-wide standards**",
+                "Built reusable platform abstractions and reference implementations for Python services and web apps, driving **cross-team adoption** of AI capabilities",
+                "**Technical Lead for Ethicara ML**: designed and delivered responsible AI solutions aligned with enterprise and regulatory standards",
+                "Governed platform usage, onboarding, and operations across **users, administrators, and engineering teams**"
+            ],
+            "technologies": [
+                "Dataiku",
                 "LLMs",
                 "MLOps",
-                "Kubernetes",
-                "Cloud Computing"
+                "Python",
+                "Responsible AI"
             ]
         },
         {
             "title": "Machine Learning Engineer",
-            "company": "SophoTree",
+            "company": "OrosDynamics (formerly SophoTree)",
             "period": "January 2022 - May 2023",
             "location": "United Kingdom",
             "promoted": "Promoted from Data Scientist (06.2021 -- 01.2022)",
             "description": [
-                "**Tech Lead** for SophoTree's EU Horizon 2020 initiatives (**Infinitech, AI4PP**), owning end-to-end system architecture, delivery, and long-term technical direction",
-                "Owned the end-to-end ML lifecycle and defined reusable pipelines adopted across multiple models and teams",
+                "**Tech Lead** for EU Horizon 2020 initiatives (**Infinitech, AI4PP**), owning end-to-end system architecture, delivery, and long-term technical direction",
+                "As de facto **platform owner**, defined reusable ML pipelines and **CI/CD**, observability, and reliability standards adopted across models, services, and teams",
                 "Designed and implemented a **distributed data collection and processing platform** on Kubernetes, horizontally scaling to support **millions of jobs per day**",
                 "Productionized multiple ML models with autoscaling, microbatching, and runtime optimizations, achieving a **320% increase in throughput** and a **40% reduction in infrastructure costs**",
                 "Built and operated API microservices integrating **PostgreSQL**, **Elasticsearch**, and analytics pipelines to support real-time and batch workloads",
-                "Acted as de facto **platform owner**, building and operating **API microservices** (**PostgreSQL**, **Elasticsearch**, analytics pipelines) and establishing CI/CD, observability, and reliability standards across services",
                 "Led development and deployment of production NLP pipelines using **Spark NLP** (classification, sentiment analysis, NER), later reused across document and news processing workloads"
             ],
             "technologies": [
@@ -135,7 +152,7 @@
         },
         {
             "title": "Data Scientist",
-            "company": "SophoTree",
+            "company": "OrosDynamics (formerly SophoTree)",
             "period": "June 2021 - January 2022",
             "location": "United Kingdom",
             "description": [
