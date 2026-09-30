@@ -85,6 +85,11 @@
             "category": "Tools & Technologies"
         }
     ],
+    "logos": {
+        "Pfizer": "/assets/logos/pfizer.svg",
+        "OrosDynamics (formerly SophoTree)": "/assets/logos/orosdynamics.webp",
+        "Lancaster University": "/assets/logos/lancaster.svg"
+    },
     "experience": [
         {
             "title": "Senior Manager, Data Science Platform Engineering",

@@ -9,6 +9,8 @@ import data from "../data/data.json"
 import { IconMap } from "@/types"
 import { parseBoldText } from "@/lib/parseBoldText"
 
+const logos: Record<string, string> = data.logos
+
 // Animation variants
 const container = {
     hidden: { opacity: 0 },
@@ -237,8 +239,11 @@ export default function Home() {
                                     variants={item}
                                     className="rounded-lg border border-accent/20 bg-card p-6 sm:p-8 shadow-sm hover:shadow-md transition-shadow"
                                 >
-                                    <div className="mb-8 pb-4 border-b border-accent/20">
+                                    <div className="mb-8 pb-4 border-b border-accent/20 flex items-center justify-between gap-4">
                                         <h3 className="text-2xl font-semibold text-primary">{company}</h3>
+                                        {logos[company] && (
+                                            <Image src={logos[company]} alt="" width={120} height={40} unoptimized className="h-10 w-auto rounded-md bg-white px-2 py-1" />
+                                        )}
                                     </div>
                                     <div className="space-y-10">
                                         {companyExperiences.map((exp, index) => (
@@ -320,6 +325,9 @@ export default function Home() {
                                         <div className="flex-1">
                                             <h4 className="text-lg font-medium mb-1">{edu.degree}</h4>
                                             <p className="text-muted-foreground text-sm">{edu.school}</p>
+                                            {logos[edu.school] && (
+                                                <Image src={logos[edu.school]} alt="" width={120} height={40} unoptimized className="mt-2 h-8 w-auto rounded-md bg-white px-2 py-1" />
+                                            )}
                                             <p className="text-muted-foreground text-sm">{edu.period}</p>
                                         </div>
                                     </div>
