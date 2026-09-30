@@ -135,10 +135,10 @@
             "promoted": "Promoted from Data Scientist (06.2021 -- 01.2022)",
             "description": [
                 "**Tech Lead** for EU Horizon 2020 initiatives (**Infinitech, AI4PP**), owning end-to-end system architecture, delivery, and long-term technical direction",
+                "Designed and implemented a **distributed data collection and processing platform** on Kubernetes, horizontally scaling to **millions of jobs per day**",
+                "Productionized multiple ML models with autoscaling, microbatching, and runtime optimizations, increasing throughput by **320%** and cutting infrastructure costs by **40%**",
                 "As de facto **platform owner**, defined reusable ML pipelines and **CI/CD**, observability, and reliability standards adopted across models, services, and teams",
-                "Designed and implemented a **distributed data collection and processing platform** on Kubernetes, horizontally scaling to support **millions of jobs per day**",
-                "Productionized multiple ML models with autoscaling, microbatching, and runtime optimizations, achieving a **320% increase in throughput** and a **40% reduction in infrastructure costs**",
-                "Built and operated API microservices integrating **PostgreSQL**, **Elasticsearch**, and analytics pipelines to support real-time and batch workloads",
+                "Built and operated API microservices integrating **PostgreSQL**, **Elasticsearch**, and analytics pipelines for real-time and batch workloads",
                 "Led development and deployment of production NLP pipelines using **Spark NLP** (classification, sentiment analysis, NER), later reused across document and news processing workloads"
             ],
             "technologies": [
@@ -158,7 +158,7 @@
             "location": "United Kingdom",
             "description": [
                 "Developed and trained NLP models for large-scale news and document analysis, focusing on **classification, sentiment analysis, and entity extraction**",
-                "Introduced advanced NLP techniques into the platform, expanding analytical capabilities beyond traditional structured data"
+                "Extended the platform from structured data to **unstructured text**, laying the groundwork for the production NLP pipelines later scaled as ML Engineer"
             ],
             "technologies": [
                 "Python",
@@ -174,9 +174,9 @@
             "period": "July 2021 - July 2022",
             "location": "Lancaster, UK",
             "description": [
-                "Designed and implemented real-time **exuberance detection and predictive modeling systems**, translating advanced econometric theory into production-grade software",
+                "Designed and implemented real-time **exuberance detection and predictive modeling systems**, translating advanced econometric theory into production-grade open-source software (**exuber**)",
                 "Delivered **14–150× performance improvements** via optimized matrix inversion and numerical methods, enabling real-time processing of large-scale economic datasets",
-                "Work from the Housing Observatory featured in **The Times** and actively used by practitioners, including **Central Banks**"
+                "Work from the Housing Observatory featured in **The Times** and used by practitioners, including **central banks**"
             ],
             "technologies": [
                 "Data Analysis",
@@ -192,8 +192,7 @@
             "period": "November 2020 - August 2021",
             "location": "Lancaster, UK",
             "description": [
-                "Delivered undergraduate and postgraduate economics courses",
-                "Consistently received outstanding student evaluations"
+                "Taught undergraduate and postgraduate economics courses, consistently receiving outstanding student evaluations"
             ],
             "technologies": [
                 "Teaching",
@@ -208,7 +207,8 @@
             "location": "Lancaster, UK",
             "description": [
                 "Built analytical models and interactive tools for real-time monitoring of UK national and regional housing markets",
-                "Led web development of the Housing Observatory platform (https://housing-observatory.com/), collaborating with the **Federal Reserve Bank of Dallas**"
+                "Led web development of the Housing Observatory platform (https://housing-observatory.com/), collaborating with the **Federal Reserve Bank of Dallas**",
+                "Authored and maintained 6 open-source R packages (**exuber**, ivx, uklr, onsr, transx, ihpdr) with **100K+ collective downloads**"
             ],
             "technologies": [
                 "Data Analysis",
