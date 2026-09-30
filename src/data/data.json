@@ -4,8 +4,8 @@
         "title": "AI/ML Engineer @ Pfizer | Econ (Ph.D.)",
         "subtitle": "Specializing in enterprise ML platforms, MLOps execution, and responsible AI systems",
         "about": [
-            "I am a Machine Learning Engineer with a Ph.D. in Economics, combining rigorous research methodology with hands-on experience building and operating production ML systems at scale. My background enables me to translate complex analytical and modeling challenges into robust, production-grade engineering solutions.",
-            "My focus is on enterprise ML platforms, with expertise in MLOps execution patterns, responsible AI, and horizontally scalable distributed systems. I work on integrating and scaling Large Language Models across enterprise environments, defining platform-wide standards for AI service integration, security, and lifecycle management in regulated settings."
+            "Machine Learning Engineer & Ph.D. in Economics. The combination sounds odd until you realize that economic modeling and enterprise AI share the same core problem: making decisions under uncertainty with imperfect data. That foundation shapes everything: how I design systems, evaluate tradeoffs, and think about model risk, causal inference, and what \"good enough\" actually means at scale.",
+            "I build and operate enterprise ML platforms and end-to-end AI solutions, from LLM integration and RAG pipelines to MLOps execution patterns, distributed systems, and platform-wide standards for AI service integration, security, and lifecycle management in regulated environments. The goal is always the same: infrastructure and solutions rigorous enough to hold up under real-world constraints, not just controlled conditions. Currently: Senior Manager, Data Science Platform Engineering at Pfizer."
         ],
         "expertise": [
             "Econometric Analysis & Time Series",
