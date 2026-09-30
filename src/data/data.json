@@ -305,6 +305,13 @@
     ],
     "publications": [
         {
+            "title": "Real Estate and Construction Sector Dynamics over the Business Cycle",
+            "authors": "Vasilopoulos, K., & Tayler, W.",
+            "journal": "Economica",
+            "year": "2026",
+            "url": "https://doi.org/10.1111/ecca.70029"
+        },
+        {
             "title": "Exuber: Recursive Right-Tailed Unit Root Testing with R",
             "authors": "Vasilopoulos, K., Pavlidis, E., & Martínez-García, E.",
             "journal": "Journal of Statistical Software",
@@ -319,12 +326,6 @@
             "year": "2020",
             "volume": "109",
             "pages": "102222"
-        },
-        {
-            "title": "Real Estate and Construction Sector Dynamics over the Business Cycle",
-            "authors": "Vasilopoulos, K., & Tayler, W.",
-            "journal": "Economica",
-            "year": "accepted"
         }
     ],
     "awards": [
