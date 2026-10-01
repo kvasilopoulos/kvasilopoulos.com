@@ -19,7 +19,8 @@
             {
                 "degree": "Ph.D. in Economics",
                 "school": "Lancaster University",
-                "period": "2016-2020"
+                "period": "2016-2020",
+                "description": "Published research in peer-reviewed journals. Presented work at multiple international conferences and academic workshops."
             },
             {
                 "degree": "M.Sc. in Economics, Applied Finance",
@@ -36,53 +37,54 @@
             "title": "Essays in Macroeconomics and Finance",
             "year": "2020",
             "publisher": "PQDT-Global"
-        }
+        },
+        "location": "Thessaloniki, Greece",
+        "cvSummary": "Machine Learning Engineer and Ph.D. in Economics building enterprise ML and GenAI platforms in regulated environments. Lead engineering for Pfizer's **Data Science & GenAI platform (Dataiku)**, serving **1,800+ data scientists** and **100K+ LLM requests/month** across LLM integration, RAG, LLMOps, and platform standards for security and lifecycle management. An economics background brings rigor to decisions under uncertainty: model risk, tradeoffs, and what “good enough” means at scale."
     },
     "skills": [
         {
-            "name": "Python & R",
-            "level": 90,
-            "category": "Programming Languages"
+            "name": "Generative AI & Large Language Models (**RAG**, **embeddings**, **fine-tuning**)",
+            "category": "AI & Machine Learning"
         },
         {
-            "name": "SQL",
-            "level": 75,
-            "category": "Programming Languages"
+            "name": "Natural Language Processing & Text Analytics",
+            "category": "AI & Machine Learning"
         },
         {
-            "name": "JavaScript/TypeScript & HTML/CSS",
-            "level": 60,
-            "category": "Programming Languages"
+            "name": "Production ML Operations & Model Lifecycle",
+            "category": "AI & Machine Learning"
         },
         {
-            "name": "Generative AI & LLMs",
-            "level": 90,
-            "category": "Machine Learning & AI"
+            "name": "Model Evaluation, Monitoring & Drift Detection",
+            "category": "AI & Machine Learning"
         },
         {
-            "name": "Natural Language Processing",
-            "level": 85,
-            "category": "Machine Learning & AI"
+            "name": "Programming: **Python**, **R**, **SQL**, **JavaScript**",
+            "category": "Engineering & Infra"
         },
         {
-            "name": "Deep Learning & Neural Networks",
-            "level": 75,
-            "category": "Machine Learning & AI"
+            "name": "Distributed Computing & **Microservices** Architecture",
+            "category": "Engineering & Infra"
         },
         {
-            "name": "Docker & K8s",
-            "level": 85,
-            "category": "Tools & Technologies"
+            "name": "Cloud & Containers: **AWS**, **Azure**, **Docker**, **Kubernetes**",
+            "category": "Engineering & Infra"
         },
         {
-            "name": "AWS Cloud Services",
-            "level": 85,
-            "category": "Tools & Technologies"
+            "name": "Scalability & Performance Optimization",
+            "category": "Engineering & Infra"
         },
         {
-            "name": "Git & CI/CD, DevOps",
-            "level": 80,
-            "category": "Tools & Technologies"
+            "name": "Web Development & **REST APIs**",
+            "category": "Engineering & Infra"
+        },
+        {
+            "name": "Data Engineering: **ElasticSearch**, **Postgres**, **Kafka**, **NoSQL**",
+            "category": "Engineering & Infra"
+        },
+        {
+            "name": "DevOps: **Git**, **Linux**, **CI/CD** Pipelines",
+            "category": "Engineering & Infra"
         }
     ],
     "logos": {
@@ -98,7 +100,7 @@
             "location": "Thessaloniki, Greece",
             "description": [
                 "Own the engineering strategy and roadmap for Pfizer's enterprise, cloud-native **Data Science & GenAI platform (Dataiku)**, serving **1,800+ data scientists** and analysts and hosting a large portfolio of production Python services and web apps",
-                "Scale **LLMOps** for **1M+ LLM requests/month**, driving cost controls, observability, and access governance across production ML and GenAI workloads",
+                "Scale **LLMOps** for **100K+ LLM requests/month**, driving cost controls, observability, and access governance across production ML and GenAI workloads",
                 "Architect enterprise **GenAI** capabilities (**LLM integrations, RAG** systems, AI assistants) as reusable platform services that accelerate AI adoption across the organization",
                 "Establish engineering standards, reusable frameworks, **APIs**, and **self-service tooling** that improve developer experience and model lifecycle governance in regulated environments",
                 "Provide **technical leadership** across platform, security, data science, and business teams, and manage a direct report"
