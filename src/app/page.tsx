@@ -3,7 +3,6 @@
 import * as React from "react"
 import Image from "next/image"
 import { motion, useScroll } from "framer-motion"
-import { useInView } from "react-intersection-observer"
 import { Github, ExternalLink, Linkedin, Mail, Twitter, User, ArrowDown, GraduationCap, Award, BookOpen, FileText } from "lucide-react"
 import data from "../data/data.json"
 import { IconMap } from "@/types"
@@ -25,42 +24,6 @@ const container = {
 const item = {
     hidden: { opacity: 0, y: 20 },
     show: { opacity: 1, y: 0 },
-}
-
-function SkillBar({ skill, inView }: { skill: typeof data.skills[0]; inView: boolean }) {
-    return (
-        <div className="mb-6">
-            <div className="mb-2">
-                <span className="font-medium">{skill.name}</span>
-            </div>
-            <div className="h-2 w-full rounded-full bg-secondary">
-                <motion.div
-                    className="h-full rounded-full bg-primary"
-                    initial={{ width: 0 }}
-                    animate={{ width: inView ? `${skill.level}%` : 0 }}
-                    transition={{ duration: 1, ease: "easeOut" }}
-                />
-            </div>
-        </div>
-    )
-}
-
-function SkillCategory({ category, skills }: { category: string; skills: typeof data.skills }) {
-    const { ref, inView } = useInView({
-        triggerOnce: true,
-        threshold: 0.1,
-    })
-
-    return (
-        <div ref={ref} className="mb-12">
-            <h2 className="mb-6 text-2xl font-semibold">{category}</h2>
-            <div>
-                {skills.map((skill) => (
-                    <SkillBar key={skill.name} skill={skill} inView={inView} />
-                ))}
-            </div>
-        </div>
-    )
 }
 
 export default function Home() {
