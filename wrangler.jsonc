@@ -1,0 +1,10 @@
+{
+  "name": "kvasilopoulos-com",
+  "compatibility_date": "2026-11-01",
+  // static export (next.config.js output: 'export') served as Workers assets
+  "assets": { "directory": "./out", "not_found_handling": "404-page" },
+  "routes": [
+    { "pattern": "kvasilopoulos.com", "custom_domain": true },
+    { "pattern": "www.kvasilopoulos.com", "custom_domain": true }
+  ]
+}
